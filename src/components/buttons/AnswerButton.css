@@ -1,0 +1,30 @@
+.answer-button-container {
+  padding: 10px;
+  background-color: white;
+  transition: clip-path 0.2s ease-in-out;
+}
+.answer-button {
+  background-color: black;
+  position: relative;
+  width: auto;
+  color: white;
+  padding: 15px;
+  user-select: none;
+  transition: clip-path 0.2s ease-in-out;
+}
+
+.tail {
+  position: absolute;
+  width: 20px; /* taille fixe */
+  height: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: black;
+
+  &.arrow {
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+  }
+  &.zigzag {
+    clip-path: polygon(0 0, 50% 20%, 100% 0, 100% 100%, 50% 80%, 0 100%);
+  }
+}
