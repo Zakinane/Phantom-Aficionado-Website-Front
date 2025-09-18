@@ -96,7 +96,7 @@ input {
 #login-password {
   clip-path: polygon(0 16%, 90% 0, 96% 98%, 0 81%);
 }
-.title {
+.title-log-sign {
   margin: auto;
   font-size: 50px;
   padding: 15px;

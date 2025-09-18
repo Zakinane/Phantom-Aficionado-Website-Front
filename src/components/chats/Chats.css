@@ -1,7 +1,11 @@
 .messages {
-  margin-top: 100px;
+  height: calc(100vh - 200px);
+  position: relative;
+  overflow: visible;
   display: flex;
   flex-direction: column;
   padding: 15px;
-  margin-bottom: 150px;
+  &:last-child {
+    margin-bottom: 100px;
+  }
 }

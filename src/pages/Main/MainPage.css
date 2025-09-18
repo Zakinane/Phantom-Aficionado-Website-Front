@@ -1,0 +1,15 @@
+.main-page {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  flex-shrink: 0; /* Sidebar reste fixe en largeur */
+}
+
+.content-area {
+  flex: 1; /* prend tout l’espace restant */
+  display: flex;
+  justify-content: center; /* centre horizontalement */
+  align-items: center;     /* centre verticalement */
+}

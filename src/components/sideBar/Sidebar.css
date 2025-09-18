@@ -1,0 +1,58 @@
+.sidebar {
+  width: 220px;
+  background: #111;
+  padding: 20px;
+  color: white;
+  height: calc(100vh - 40px);
+  display: flex;
+  flex-direction: column;
+    transition: ease-out 0.1s;
+
+}
+
+.sidebar.collapsed {
+  width: 50px;
+}
+
+.profile-icon {
+  align-self: center;
+  width: 40px;
+  height: 40px;
+  background: gray;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.menu a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.menu a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.icon {
+  font-size: 20px;
+}
+
+.toggle {
+  margin-top: auto;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* Tooltip */
+.tooltip {
+  position: fixed;
+  pointer-events: none;
+  z-index: 999;
+}

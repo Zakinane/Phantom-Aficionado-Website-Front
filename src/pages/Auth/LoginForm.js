@@ -36,7 +36,7 @@ function LoginForm({ onLogin, switchToSignup }) {
 
   return (
     <div id="login-form" className="active">
-      <div className="title">
+      <div className="title-log-sign">
         <span className="rotate-txt">LOG IN</span>
       </div>
       <form onSubmit={handleLogin}>

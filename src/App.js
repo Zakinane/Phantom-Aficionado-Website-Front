@@ -1,9 +1,9 @@
 import "./App.css";
 import Landing from "./pages/Landing/Landing";
 import Auth from "./pages/Auth/Auth";
-import Phorums from "./pages/Phorums/Phorums";
 import TEST from "./pages/TEST";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MainPage from "./pages/Main/MainPage";
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/Authentication" element={<Auth />} />
-          <Route path="/Phorum" element={<Phorums />} />
+          <Route path="/Phorum" element={<MainPage />} />
 
           <Route path="/TEST" element={<TEST />} />
           <Route

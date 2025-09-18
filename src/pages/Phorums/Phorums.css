@@ -29,72 +29,20 @@
     background-color: #0056b3;
   }
 
-  .search-bar {
-    clip-path: polygon(0 0, 96% 22%, 94% 77%, 1% 92%);
-    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-    background-color: black;
-    width: 90vw;
-    height: 40px;
-    margin: 15px;
-    position: relative;
-    z-index: 2;
-    padding: 20px;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-  }
-  .search-bar input {
-    border: none;
-    background: transparent;
-    color: white;
-    font-size: 18px;
-    width: 100%;
-    outline: none;
-  }
-  .search-bar .search-icon {
-    margin-right: 25px;
-    width: 20px;
-    color: white;
-  }
-  .search-bar-border {
-    position: fixed;
-    clip-path: polygon(0 0, 96% 22%, 94% 77%, 1% 92%);
-    background-color: rgb(78, 78, 78);
-    width: 95vw;
-    height: 55px;
-    margin: 7px;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    box-sizing: border-box;
-    padding: 20px;
-  }
-
   .background-title {
     position: fixed;
     background-color: black;
     width: 100vw;
-    height: 143px;
-    z-index: 12;
-  }
-  .title {
-    color: white;
-    position: fixed;
-    width: 40px;
-    font-size: 60px;
-    rotate: -10deg;
-  }
-  #PHORUM {
-    margin: 5px 0px 0px 10px;
-    padding: 30px 0px;
-    position: fixed;
-    top: -20px;
-    left: 0;
+    height: 160px;
+    z-index: 100;
   }
   .messages-container {
+    margin-top: 160px;
+    display: flex;
+    justify-content: center;
     padding: 20px;
+    height: calc(100vh - 200px);
     overflow-y: auto;
-    scrollbar-color: #760101 #580303;
-    scrollbar-width: thin;
+    scrollbar-color: #760101 #290202;
   }
 }

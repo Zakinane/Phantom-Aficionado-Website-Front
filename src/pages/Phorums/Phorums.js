@@ -1,31 +1,17 @@
 import "./Phorums.css";
-import Chat from "../../components/chats/Chat";
+import Chats from "../../components/chats/Chats";
+import Title from "../../components/title/Title";
+import SearchBar from "../../components/searchBar/SearchBar";
 
 function Phorums() {
   return (
     <div className="phorums">
+      <Title title={"PHORUM"} redIndex={1} />
       <div className="background-title">
-        <center>
-          <div className="search-bar-border" />
-          <div className="search-bar">
-            <input type="text" placeholder="Search" />
-            <a href=".">
-              <img
-                alt=""
-                className="search-icon"
-                src="../images/icons/monocle.png"
-              />
-            </a>
-          </div>
-        </center>
-        <div className="title">
-          <div id="PHORUM">
-            P<span style={{ color: "rgb(222, 15, 15)" }}>H</span>ORUM
-          </div>
-        </div>
+        <SearchBar />
       </div>
       <div className="messages-container">
-        <div className="messages">{Chat}</div>
+        <Chats infos={"rien lol"} />
       </div>
     </div>
   );

@@ -1,0 +1,39 @@
+.search-bar {
+  clip-path: polygon(0 0, 96% 22%, 94% 77%, 1% 92%);
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  background-color: black;
+  width: 90vw;
+  height: 40px;
+  margin: 15px;
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+.search-bar input {
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 18px;
+  width: 100%;
+  outline: none;
+}
+.search-bar .search-icon {
+  margin-right: 25px;
+  width: 20px;
+  color: white;
+}
+.search-bar-border {
+  clip-path: polygon(0 0, 96% 22%, 94% 77%, 1% 92%);
+  background-color: rgb(78, 78, 78);
+  width: 95vw;
+  height: 55px;
+  margin: 7px;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  box-sizing: border-box;
+  padding: 20px;
+}
