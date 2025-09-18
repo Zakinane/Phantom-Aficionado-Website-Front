@@ -4,12 +4,9 @@
 }
 
 .sidebar {
-  flex-shrink: 0; /* Sidebar reste fixe en largeur */
+  flex-shrink: 0; 
 }
 
 .content-area {
-  flex: 1; /* prend tout l’espace restant */
-  display: flex;
-  justify-content: center; /* centre horizontalement */
-  align-items: center;     /* centre verticalement */
+  flex: 1;
 }

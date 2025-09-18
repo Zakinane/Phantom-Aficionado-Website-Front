@@ -1,11 +1,12 @@
 .poll{
     background-color: #bf0a0a;
-    background-image: url(../images/background-poll.png);
+    background-image: url(../../assets/images/background-poll.png);
     background-position: center;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
+    height: 100vh;
   
     #POLL {
       position: fixed;
@@ -14,36 +15,9 @@
       z-index: 2;
     }
   
-    .title {
-      color: white;
-      position: fixed;
-      width: 40px;
-      font-size: 80px;
-      rotate: -12deg;
-    }
-    .sub-title {
-      color: white;
-      display: flex;
-      margin-left: 80px;
-      width: 200px;
-      font-size: 30px;
-    }
-    .background-POLL {
-      position: fixed;
-      top: -320px;
-      left: -80px;
-      -webkit-text-stroke-width: 22px;
-      -webkit-text-stroke-color: black;
-      z-index: -1;
-    }
-    .background-WEEK {
-      position: fixed;
-      display: flex;
-      width: 200px;
-      -webkit-text-stroke-width: 15px;
-      -webkit-text-stroke-color: black;
-      z-index: -1;
-    }
+.title-container{
+
+}
     .poll-container {
       width: 95%;
       text-align: center;
@@ -97,6 +71,7 @@
     }
   
     .poll-btn {
+      user-select: none;
       background-color: #900a0a;
       padding: 10px;
       color: white;

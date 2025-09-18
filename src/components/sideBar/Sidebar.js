@@ -1,18 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Title from "../title/Title";
 import "./Sidebar.css";
 
 function Sidebar() {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(() => {
+    const saved = localStorage.getItem("sidebar-collapsed");
+    return saved ? JSON.parse(saved) : false;
+  });
   const [tooltip, setTooltip] = useState(null);
+  const navigate = useNavigate();
 
   const menuItems = [
-    { href: "/phorum", icon: "💬", label: "Phorum" },
-    { href: "/polls", icon: "📊", label: "Polls" },
+    { href: "/phorum", icon: "💬", label: "PHORUM" },
+    { href: "/poll", icon: "📊", label: "POLL" },
     { href: "/im", icon: "✉️", label: "IM" },
     { href: "/notifications", icon: "🔔", label: "Notifications" },
     { href: "/support", icon: "❤", label: "Support" },
   ];
+
+  useEffect(() => {
+    localStorage.setItem("sidebar-collapsed", JSON.stringify(collapsed));
+  }, [collapsed]);
 
   const handleMouseEnter = (e, text) => {
     setTooltip({
@@ -34,6 +43,11 @@ function Sidebar() {
 
   const handleMouseLeave = () => setTooltip(null);
 
+  const handleDisconnect = () => {
+    localStorage.removeItem("token"); // supprimer le token
+    navigate("/Authentication");
+  };
+
   return (
     <>
       <aside className={`sidebar ${collapsed ? "collapsed" : ""}`}>
@@ -53,7 +67,11 @@ function Sidebar() {
             </a>
           ))}
         </nav>
-
+        {!collapsed && (
+          <button className="disconnect-btn" onClick={handleDisconnect}>
+            Disconnect
+          </button>
+        )}
         <button className="toggle" onClick={() => setCollapsed(!collapsed)}>
           {collapsed ? "➡️" : "⬅️"}
         </button>

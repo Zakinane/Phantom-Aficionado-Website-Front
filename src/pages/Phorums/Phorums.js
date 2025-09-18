@@ -7,7 +7,7 @@ function Phorums() {
   return (
     <div className="phorums">
       <Title title={"PHORUM"} redIndex={1} />
-      <div className="background-title">
+        <div className="background-title">
         <SearchBar />
       </div>
       <div className="messages-container">

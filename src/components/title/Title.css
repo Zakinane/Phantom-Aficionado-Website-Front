@@ -1,4 +1,5 @@
 .title {
+  user-select: none;
   z-index: 120;
   position: fixed;
   padding: 20px;
