@@ -1,0 +1,110 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal {
+  background: #111;
+  color: white;
+  padding: 30px;
+  border-radius: 8px;
+  width: 600px;
+  max-width: 90%;
+  position: relative;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.modal-title {
+  margin: 0 0 20px;
+  font-size: 22px;
+}
+
+.input-title {
+  width: 100%;
+  padding: 10px;
+  background: #1c1c1c;
+  border: 1px solid #333;
+  color: white;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.poll-btn {
+  padding: 8px 14px;
+  background: #222;
+  border: 1px solid #444;
+  color: white;
+  font-size: 13px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.editor {
+  border: 1px solid #333;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.toolbar {
+  background: #222;
+  padding: 5px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.toolbar button {
+  background: #333;
+  border: none;
+  color: white;
+  padding: 4px 6px;
+  cursor: pointer;
+  border-radius: 2px;
+  font-size: 12px;
+}
+
+.toolbar .preview {
+  margin-left: auto;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+textarea {
+  width: 100%;
+  height: 150px;
+  background: #111;
+  border: none;
+  color: white;
+  padding: 10px;
+  font-size: 14px;
+  resize: none;
+}
+
+.post-btn {
+  width: 100%;
+  padding: 12px;
+  background: #c62800;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}

@@ -25,9 +25,6 @@
     width: auto;
   }
 
-  button:hover {
-    background-color: #0056b3;
-  }
   .background-title {
     position: fixed;
     background-color: black;
@@ -43,5 +40,17 @@
     height: calc(100vh - 200px);
     overflow-y: auto;
     scrollbar-color: #760101 #290202;
+  }
+  .add-btn {
+    position: fixed;
+    top: 100px;
+    right: 50px;
+    z-index: 50000;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .add-btn:hover {
+    transform: scale(1.1);
   }
 }

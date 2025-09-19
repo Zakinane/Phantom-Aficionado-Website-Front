@@ -1,16 +1,6 @@
-.add-btn-container {
-  background-color: white;
-  padding: 5px;
-  position: absolute;
-  top: 70px;
-  right: 20px;
-  z-index: 13;
-  clip-path: polygon(13% 9%, 100% 0%, 85% 88%, 0% 100%);
-}
 .add-btn {
   background-color: black;
   padding: 5px;
-  clip-path: polygon(13% 9%, 100% 0%, 85% 88%, 0% 100%);
 }
 #add-btn-phorum {
   cursor: pointer;
