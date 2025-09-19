@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import starVideo from "../../assets/video/Red Star Looping Background.mp4"
 
 import "./Auth.css";
 
@@ -56,10 +57,15 @@ function Auth() {
 
   return (
     <>
-      <div id="star-BG" alt="Pretty stars">
-        {/* <StarBG /> */}
-      </div>
+      <video autoPlay loop muted playsInline
+      src={starVideo}
+        id="star-BG"
+        className={isLogin ? "white" : "red"}
+        alt="Pretty stars"
+      />
+
       <div id="cut" alt="cut"></div>
+      <div id="cut-black" alt="black stupid square"></div>
       <section id="main-view">
         {/* FORMS */}
         {!isLoggedIn && isLogin && (

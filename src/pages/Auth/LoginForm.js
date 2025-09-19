@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Button from "../../components/buttons/AnswerButton";
 
 function LoginForm({ onLogin, switchToSignup }) {
   const [error, setError] = useState("");
@@ -43,7 +44,7 @@ function LoginForm({ onLogin, switchToSignup }) {
         <div className="form-container">
           {/* EMAIL */}
           <div className="field">
-            <div className="field-container email">
+            <div className="field-container login-email">
               <input
                 type="email"
                 value={formData.email}
@@ -57,22 +58,24 @@ function LoginForm({ onLogin, switchToSignup }) {
           </div>
           {/* PASSWORD */}
           <div className="field">
-            <div className="field-container password">
+            <div className="field-container login-password">
               <input
                 type="password"
                 value={formData.password}
                 name="password"
                 onChange={handleChange}
                 placeholder="Password"
+                id="login-password"
                 required
               />
             </div>
           </div>
-          <div className="button-container blue">
-            <button type="submit" className="button">
-              LOG IN
-            </button>
-          </div>
+          <Button
+            onClick="submit"
+            text="CONNECT"
+            shape="Zigzag"
+            color="#ce0b0bff"
+          />
         </div>
       </form>
       <div className="hint">

@@ -1,15 +1,15 @@
-// INCOMPLETE
-
+// AnswerButton.jsx
 import React, { useState } from "react";
 import "./AnswerButton.css";
 
 function AnswerButton({
   text = "Looking cool Joker!",
-  isComingLeft = "true",
-  hasBorder = "true",
-  shape = "NoTail",
+  isComingLeft = true,
+  hasBorder = true,
+  shape = "NoTail", // "NoTail" | "Arrow" | "Zigzag"
+  color = "#ffffff",
 }) {
-  // Points for the Clip-path Polygone
+  // Points for the Clip-path Polygone SIMPLE
   const basePoints = [
     { x: 9, y: 0 },
     { x: 100, y: 26 },
@@ -30,8 +30,7 @@ function AnswerButton({
 
   function handleMouseEnter() {
     if (!intervalId) {
-      setPoints(randomizePoints()); //déput instentanné
-
+      setPoints(randomizePoints()); // instantané
       const id = setInterval(() => {
         setPoints(randomizePoints());
       }, 200);
@@ -51,27 +50,24 @@ function AnswerButton({
     .map((p) => `${p.x}% ${p.y}%`)
     .join(", ")})`;
 
-  console.log(clipPathValue);
-
   return (
     <div
       className="answer-button-container"
       style={{
-        display: hasBorder ? "block" : "none",
+        backgroundColor: color,
         clipPath: clipPathValue,
         transform: isComingLeft ? "scale(-1, 1)" : "scale(1, 1)",
       }}
-             onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        onFocus={handleMouseEnter}
-        onBlur={handleMouseLeave}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onFocus={handleMouseEnter}
+      onBlur={handleMouseLeave}
     >
-      <div
-        className={`answer-button ${hasBorder ? "with-border" : ""}`}
+      <button
+        className="answer-button"
         style={{
           clipPath: clipPathValue,
         }}
- 
       >
         <span
           style={{
@@ -81,8 +77,18 @@ function AnswerButton({
         >
           {text}
         </span>
-        {shape !== "NoTail" && <div className={`tail ${shape}`} />}
-      </div>
+
+        {shape !== "NoTail" && (
+          <div
+            className={`tail ${
+              shape === "Arrow" ? "arrow" : shape === "Zigzag" ? "zigzag" : ""
+            }`}
+            style={{
+              [isComingLeft ? "right" : "left"]: "-20px",
+            }}
+          />
+        )}
+      </button>
     </div>
   );
 }

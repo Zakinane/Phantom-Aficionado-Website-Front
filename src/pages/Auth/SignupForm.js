@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Button from "../../components/buttons/AnswerButton"
 
 function SignupForm({ onSignup, switchToLogin }) {
   const [error, setError] = useState("");
@@ -43,7 +44,7 @@ function SignupForm({ onSignup, switchToLogin }) {
         <div className="form-container">
           {/* EMAIL */}
           <div className="field">
-            <div className="field-container email">
+            <div className="field-container signup-email">
               <input
                 type="email"
                 value={formData.email}
@@ -57,7 +58,7 @@ function SignupForm({ onSignup, switchToLogin }) {
           </div>
           {/* PASSWORD */}
           <div className="field">
-            <div className="field-container password">
+            <div className="field-container signup-password">
               <input
                 type="password"
                 value={formData.password}
@@ -69,11 +70,13 @@ function SignupForm({ onSignup, switchToLogin }) {
               />
             </div>
           </div>
-          <div className="button-container green">
-            <button type="submit" className="button">
-              CREATE ACCOUNT
-            </button>
-          </div>
+          <Button
+            onClick="submit"
+            text="CONNECT"
+            shape="NoTail"
+            color="#efdc0bff"
+            isComingLeft={false}
+          />
         </div>
       </form>
       <div className="hint">

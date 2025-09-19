@@ -12,12 +12,23 @@ body {
 
 #star-BG {
   position: fixed;
-  overflow: hidden;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: calc(50% + 200px);
+  height: 100%;
+  background-size: cover;
+  object-fit: cover;
+  transition: filter 0.5s ease-in-out;
+}
+#star-BG.red {
+  filter: grayscale(0) brightness(1) saturate(1);
+}
+#star-BG.white {
+  filter: grayscale(1) brightness(3) saturate(1);
 }
 
 #cut {
+  z-index: 2;
   width: 100%;
   height: 200px;
   top: 50%;
@@ -28,6 +39,16 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+}
+#cut-black {
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  top: 70%;
+  position: fixed;
+  display: block;
+  left: 0;
+  background-color: #000000;
 }
 
 #main-view {
@@ -53,6 +74,7 @@ body {
   cursor: pointer;
 }
 form {
+  z-index: 100;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -73,26 +95,31 @@ form {
 
 input {
   width: 100%;
-  padding: 10px;
+  padding: 14px;
   box-sizing: border-box;
+  border: 0px;
   background-color: black;
   color: white;
 }
-.field-container.email {
-  padding: 10px;
+.field-container {
+    padding: 10px;
   background-color: rgb(255, 255, 255);
+  transition: clip-path 0.5s ease-in-out, background-color 0.3s;
+}
+.field-container.login-email,
+.field-container.signup-password {
   clip-path: polygon(0 0, 96% 18%, 95% 77%, 4% 100%);
 }
-#email,
+
+.field-container.login-password,
+.field-container.signup-email {
+  clip-path: polygon(0 16%, 90% 0, 96% 98%, 0 81%);
+}
+#signup-password,
 #login-email {
   clip-path: polygon(0 0, 96% 18%, 95% 77%, 4% 100%);
 }
-.field-container.password {
-  padding: 10px;
-  background-color: rgb(255, 255, 255);
-  clip-path: polygon(0 16%, 90% 0, 96% 98%, 0 81%);
-}
-#password,
+#signup-email,
 #login-password {
   clip-path: polygon(0 16%, 90% 0, 96% 98%, 0 81%);
 }
@@ -199,6 +226,7 @@ input {
 
 #signup-form,
 #login-form {
+  z-index: 100;
   display: none;
   clip-path: polygon(6% 5%, 100% 0%, 93% 90%, 0% 100%);
   background-color: #ffffffe9;
