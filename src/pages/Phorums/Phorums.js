@@ -23,7 +23,6 @@ function Phorums() {
         <Chats infos={"rien lol"} />
       </div>
 
-      {/* Modale affichée si showModal = true */}
       {showModal && <NewTopicModal onClose={() => setShowModal(false)} />}
     </div>
   );

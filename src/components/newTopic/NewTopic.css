@@ -6,6 +6,7 @@
   justify-content: center;
   align-items: center;
   z-index: 2000;
+  overflow: auto; 
 }
 
 .modal {
@@ -15,6 +16,8 @@
   border-radius: 8px;
   width: 600px;
   max-width: 90%;
+  max-height: 90vh; 
+  overflow-y: auto; 
   position: relative;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
 }
@@ -35,14 +38,29 @@
   font-size: 22px;
 }
 
-.input-title {
+.input-title,
+.input-tags {
   width: 100%;
   padding: 10px;
   background: #1c1c1c;
   border: 1px solid #333;
   color: white;
   border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px; 
   margin-bottom: 15px;
+}
+
+.tag {
+  background: #222;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
 }
 
 .poll-btn {
@@ -53,6 +71,27 @@
   font-size: 13px;
   cursor: pointer;
   margin-bottom: 20px;
+}
+
+.poll-editor input {
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 8px;
+  background: #1c1c1c;
+  border: 1px solid #333;
+  border-radius: 4px;
+  color: white;
+}
+
+.poll-editor button {
+  margin-top: 5px;
+  padding: 6px 10px;
+  background: #222;
+  border: 1px solid #444;
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 4px;
 }
 
 .editor {
@@ -95,6 +134,7 @@ textarea {
   padding: 10px;
   font-size: 14px;
   resize: none;
+  overflow: auto;
 }
 
 .post-btn {
