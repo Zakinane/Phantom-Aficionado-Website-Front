@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import starVideo from "../../assets/video/Red Star Looping Background.mp4"
+import starVideo from "../../assets/video/Red-Star-Looping-Background.mp4"
 
 import "./Auth.css";
 
-import StarBG from "../../components/bg/StarBG";
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
 
