@@ -8,6 +8,7 @@ import NewTopicModal from "../../components/newTopic/NewTopic"; // ← importe l
 
 function Phorums() {
   const [showModal, setShowModal] = useState(false);
+  const [chatsData, setChatsData] = useState({});
 
   return (
     <div className="phorums">

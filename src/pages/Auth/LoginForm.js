@@ -63,6 +63,7 @@ function LoginForm({ onLogin, switchToSignup }) {
                 type="password"
                 value={formData.password}
                 name="password"
+                minLength={6}
                 onChange={handleChange}
                 placeholder="Password"
                 id="login-password"
@@ -71,7 +72,7 @@ function LoginForm({ onLogin, switchToSignup }) {
             </div>
           </div>
           <Button
-            onClick="submit"
+            type="submit"
             text="CONNECT"
             shape="Zigzag"
             color="#ce0b0bff"

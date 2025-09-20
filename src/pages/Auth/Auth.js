@@ -29,7 +29,7 @@ function Auth() {
     setEmail(userEmail);
     setIsLoggedIn(true);
     localStorage.setItem("token", newToken);
-    localStorage.setItem("email", email);
+    localStorage.setItem("email", userEmail);
     setToken(newToken);
   };
 
@@ -37,7 +37,7 @@ function Auth() {
     setEmail(userEmail);
     setIsLoggedIn(true);
     localStorage.setItem("token", newToken);
-    localStorage.setItem("email", email);
+    localStorage.setItem("email", userEmail);
     setToken(newToken);
   };
 

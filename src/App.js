@@ -26,13 +26,15 @@ function App() {
           <Route path="/tEST" element={<TEST />} />
           <Route path="*" element={<NotFound />} />
 
-          {protectedRoutes.map((route) => (
-            <Route
-              key={route.path}
-              path={route.path}
-              element={<MainPage>{route.component}</MainPage>}
-            />
-          ))}
+          <Route element={<MainPage />}>
+            {protectedRoutes.map((route) => (
+              <Route
+                key={route.path}
+                path={route.path}
+                element={route.component}
+              />
+            ))}
+          </Route>
         </Routes>
       </BrowserRouter>
     </div>

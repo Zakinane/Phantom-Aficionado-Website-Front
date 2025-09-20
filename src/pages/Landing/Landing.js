@@ -7,7 +7,10 @@ import MonNom from "../../assets/images/MonNom.png";
 import "./Landing.css";
 
 function Landing() {
+  const token = localStorage.getItem("token");
+
   useEffect(() => {
+    // change le fond de body (stupid solution)
     document.body.classList.add("landing-body");
     return () => {
       document.body.classList.remove("landing-body");
@@ -17,12 +20,12 @@ function Landing() {
     <>
       <div className="grid">
         <header>
-          <Link to="./Authentication">
+          <Link to={token ? "./phorum" : "./authentication"}>
             <img id="phansiteLogo" src={PhanSiteLogo} alt="Phan-site Logo" />
           </Link>
         </header>
 
-        <Link to="./Authentication">
+        <Link to={token ? "./phorum" : "./authentication"}>
           <img src={DechireFinn} id="dechire" alt="line" />
         </Link>
 

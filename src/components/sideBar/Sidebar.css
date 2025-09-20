@@ -11,6 +11,9 @@
 
 .sidebar.collapsed {
   width: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .profile-icon {
@@ -26,7 +29,10 @@
   flex: 1;
 }
 
-.menu a {
+.menu button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -36,7 +42,7 @@
   transition: background 0.2s;
 }
 
-.menu a:hover {
+.menu button:hover {
   background: rgba(255, 255, 255, 0.1);
 }
 

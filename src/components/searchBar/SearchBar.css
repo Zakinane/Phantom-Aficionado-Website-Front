@@ -1,16 +1,24 @@
 .search-bar {
   clip-path: polygon(0 0, 96% 22%, 94% 77%, 1% 92%);
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  background-color: black;
-  width: 90vw;
+  background: rgb(83, 81, 81);
+  width: 90%;
   height: 40px;
   margin: 15px;
   position: relative;
   z-index: 2;
-  padding: 20px;
+  padding: 30px;
   box-sizing: border-box;
   display: flex;
   align-items: center;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 9px;
+    background: rgb(0, 0, 0);
+    clip-path: polygon(0 0, 96% 22%, 94% 77%, 1% 92%);
+    z-index: -1;
+  }
 }
 .search-bar input {
   border: none;
@@ -24,16 +32,4 @@
   margin-right: 25px;
   width: 20px;
   color: white;
-}
-.search-bar-border {
-  clip-path: polygon(0 0, 96% 22%, 94% 77%, 1% 92%);
-  background-color: rgb(78, 78, 78);
-  width: 95vw;
-  height: 55px;
-  margin: 7px;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  box-sizing: border-box;
-  padding: 20px;
 }

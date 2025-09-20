@@ -1,13 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Title from "../title/Title";
 import "./Sidebar.css";
 
-function Sidebar() {
-  const [collapsed, setCollapsed] = useState(() => {
-    const saved = localStorage.getItem("sidebar-collapsed");
-    return saved ? JSON.parse(saved) : false;
-  });
+function Sidebar({ collapsed, setCollapsed }) {
   const [tooltip, setTooltip] = useState(null);
   const navigate = useNavigate();
 
@@ -18,10 +14,6 @@ function Sidebar() {
     { href: "/notifications", icon: "🔔", label: "Notifications" },
     { href: "/support", icon: "❤", label: "Support" },
   ];
-
-  useEffect(() => {
-    localStorage.setItem("sidebar-collapsed", JSON.stringify(collapsed));
-  }, [collapsed]);
 
   const handleMouseEnter = (e, text) => {
     setTooltip({
@@ -45,7 +37,7 @@ function Sidebar() {
 
   const handleDisconnect = () => {
     localStorage.removeItem("token"); // supprimer le token
-    navigate("/Authentication");
+    navigate("/");
   };
 
   return (
@@ -55,26 +47,26 @@ function Sidebar() {
 
         <nav className="menu">
           {menuItems.map((item) => (
-            <a
+            <button
               key={item.label}
-              href={item.href}
+              onClick={() => navigate(item.href)}
               onMouseEnter={(e) => handleMouseEnter(e, item.label)}
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
             >
               <span className="icon">{item.icon}</span>
               {!collapsed && <span>{item.label}</span>}
-            </a>
+            </button>
           ))}
         </nav>
+        <button className="toggle" onClick={() => setCollapsed(!collapsed)}>
+          {collapsed ? "➡️" : "⬅️"}
+        </button>
         {!collapsed && (
           <button className="disconnect-btn" onClick={handleDisconnect}>
             Disconnect
           </button>
         )}
-        <button className="toggle" onClick={() => setCollapsed(!collapsed)}>
-          {collapsed ? "➡️" : "⬅️"}
-        </button>
       </aside>
 
       {tooltip && (

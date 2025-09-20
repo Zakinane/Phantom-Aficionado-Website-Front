@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Button from "../../components/buttons/AnswerButton"
+import Button from "../../components/buttons/AnswerButton";
 
 function SignupForm({ onSignup, switchToLogin }) {
   const [error, setError] = useState("");
@@ -62,6 +62,7 @@ function SignupForm({ onSignup, switchToLogin }) {
               <input
                 type="password"
                 value={formData.password}
+                minLength={6}
                 name="password"
                 onChange={handleChange}
                 placeholder="Password"
@@ -71,8 +72,8 @@ function SignupForm({ onSignup, switchToLogin }) {
             </div>
           </div>
           <Button
-            onClick="submit"
-            text="CONNECT"
+            type="submit"
+            text="CREATE ACCOUNT"
             shape="NoTail"
             color="#efdc0bff"
             isComingLeft={false}
