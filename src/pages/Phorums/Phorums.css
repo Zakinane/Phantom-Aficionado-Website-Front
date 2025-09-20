@@ -45,7 +45,7 @@
     position: fixed;
     top: 100px;
     right: 50px;
-    z-index: 50000;
+    z-index: 500;
     cursor: pointer;
     transition: transform 0.2s ease;
   }

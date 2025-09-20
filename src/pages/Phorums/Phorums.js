@@ -13,10 +13,10 @@ function Phorums() {
   return (
     <div className="phorums">
       <Title title={"PHORUM"} redIndex={1} />
+      <AddTopicButton onClick={() => setShowModal(true)} />
 
       <div className="background-title">
         <SearchBar />
-        <AddTopicButton onClick={() => setShowModal(true)} />
       </div>
 
       <div className="messages-container">
