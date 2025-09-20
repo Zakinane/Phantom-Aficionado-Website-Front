@@ -8,9 +8,6 @@
 # testing
 /coverage
 
-#for now
-video 
-
 # production
 /build
 
