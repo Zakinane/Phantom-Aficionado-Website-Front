@@ -1,14 +1,13 @@
 import { useState } from "react";
 import "./Phorums.css";
-import Chats from "../../components/chats/Chats";
+import Topics from "../../components/topics/Topics";
 import Title from "../../components/title/Title";
 import AddTopicButton from "../../components/buttons/AddTopicButton";
 import SearchBar from "../../components/searchBar/SearchBar";
-import NewTopicModal from "../../components/newTopic/NewTopic"; // ← importe la modale
+import NewTopicModal from "../../components/newTopic/NewTopic";
 
 function Phorums() {
   const [showModal, setShowModal] = useState(false);
-  const [chatsData, setChatsData] = useState({});
 
   return (
     <div className="phorums">
@@ -19,8 +18,8 @@ function Phorums() {
         <SearchBar />
       </div>
 
-      <div className="messages-container">
-        <Chats infos={"rien lol"} />
+      <div className="topics-container">
+        <Topics />
       </div>
 
       {showModal && <NewTopicModal onClose={() => setShowModal(false)} />}

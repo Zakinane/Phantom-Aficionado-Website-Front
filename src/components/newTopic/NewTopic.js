@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import "./NewTopic.css";
 
 const NewTopic = ({ onClose }) => {
@@ -8,6 +10,7 @@ const NewTopic = ({ onClose }) => {
   const [pollQuestion, setPollQuestion] = useState("");
   const [pollOptions, setPollOptions] = useState(["", ""]);
   const [showPoll, setShowPoll] = useState(false);
+  const [showPreview, setShowPreview] = useState(false);
 
   const handleAddTag = (e) => {
     if (e.key === "Enter" && e.target.value) {
@@ -19,6 +22,80 @@ const NewTopic = ({ onClose }) => {
 
   const handleRemoveTag = (index) => {
     setTags(tags.filter((_, i) => i !== index));
+  };
+
+  const applyMarkdown = (syntax) => {
+    const textarea = document.querySelector("textarea");
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+
+    if (start === end) {
+      let insertText = syntax;
+      if (syntax === "Spoiler") insertText = "||||";
+      if (syntax === "Link") insertText = "[](url)";
+      if (syntax === "Blockquote") insertText = "> ";
+      if (syntax === "List") insertText = "- ";
+
+      const newText =
+        description.slice(0, start) + insertText + description.slice(end);
+      setDescription(newText);
+
+      setTimeout(() => {
+        if (syntax === "spoiler")
+          textarea.selectionStart = textarea.selectionEnd = start + 2;
+        else if (syntax === "link")
+          textarea.selectionStart = textarea.selectionEnd = start + 1;
+        else
+          textarea.selectionStart = textarea.selectionEnd =
+            start + insertText.length;
+        textarea.focus();
+      }, 0);
+
+      return;
+    }
+
+    // Texte sélectionné
+    const selectedText = description.slice(start, end);
+    let transformed = selectedText;
+
+    switch (syntax) {
+      case "Bold":
+        transformed = `**${selectedText}**`;
+        break;
+      case "Italic":
+        transformed = `*${selectedText}*`;
+        break;
+      case "`":
+        transformed = `\`${selectedText}\``;
+        break;
+      case "Crossed":
+        transformed = `~~${selectedText}~~`;
+        break;
+      case "Spoiler":
+        transformed = `||${selectedText}||`;
+        break;
+      case "Link":
+        transformed = `[${selectedText}](url)`;
+        break;
+      case "Blockquote":
+        transformed = `> ${selectedText}`;
+        break;
+      case "List":
+        transformed = `- ${selectedText}`;
+        break;
+      default:
+        transformed = selectedText;
+    }
+
+    const newText =
+      description.slice(0, start) + transformed + description.slice(end);
+    setDescription(newText);
+
+    setTimeout(() => {
+      textarea.selectionStart = start;
+      textarea.selectionEnd = start + transformed.length;
+      textarea.focus();
+    }, 0);
   };
 
   const handlePollOptionChange = (index, value) => {
@@ -58,8 +135,10 @@ const NewTopic = ({ onClose }) => {
         body: JSON.stringify(body),
       });
 
-      if (!res.ok) throw new Error("Failed to create topic");
-
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.error || "Failed to create topic");
+      }
       const data = await res.json();
       console.log("Topic created:", data);
       onClose();
@@ -140,23 +219,52 @@ const NewTopic = ({ onClose }) => {
 
         <div className="editor">
           <div className="toolbar">
-            <button>B</button>
+            <button type="button" onClick={() => applyMarkdown("Bold")}>
+              B
+            </button>
+            <button type="button" onClick={() => applyMarkdown("Italic")}>
+              I
+            </button>
             <button>U</button>
-            <button>S</button>
-            <button>≡</button>
-            <button>“ ”</button>
-            <button>{`</>`}</button>
-            <button>🔗</button>
+            <button type="button" onClick={() => applyMarkdown("Crossed")}>
+              S
+            </button>
+            <button
+              type="button"
+              onClick={() => applyMarkdown("`")}
+            >{`</>`}</button>
+            <button type="button" onClick={() => applyMarkdown("List")}>
+              ≡
+            </button>
+            <button type="button" onClick={() => applyMarkdown("Blockquote")}>
+              “ ”
+            </button>
+            <button type="button" onClick={() => applyMarkdown("Spoiler")}>
+              SPOILER
+            </button>
             <button>😊</button>
+            <button type="button" onClick={() => applyMarkdown("Link")}>
+              🔗
+            </button>
             <button>🖼️</button>
-            <button>?</button>
-            <span className="preview">PREVIEW</span>
+            <button
+              className="preview"
+              type="button"
+              onClick={() => setShowPreview(!showPreview)}
+            >
+              PREVIEW
+            </button>{" "}
           </div>
           <textarea
             placeholder="To keep discussions pleasant, we thank you for remaining polite in all circumstances :)"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
+          {showPreview && (
+            <div className="preview-box">
+              <Markdown remarkPlugins={[remarkGfm]}>{description}</Markdown>
+            </div>
+          )}
         </div>
 
         <button className="post-btn" onClick={handlePost}>

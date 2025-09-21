@@ -10,3 +10,9 @@
 .content-area {
   flex: 1;
 }
+.loadin-message{
+  color: yellow;
+}
+.error-message{
+  color: red;
+}

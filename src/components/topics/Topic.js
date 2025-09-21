@@ -1,10 +1,10 @@
-import "./Chat.css";
+import "./Topic.css";
 
-function Chat({ chatRoomURL, title, content, isNew, nbrPosts }) {
+function Topic({ topicRoomURL, title, content, isNew, nbrPosts }) {
   return (
-    <a href={chatRoomURL} className="message">
+    <a href={topicRoomURL} className="topic">
       {isNew && <span className="badge">NEW</span>}
-      <div className="title-chat">{title}</div>
+      <div className="title-topic">{title}</div>
       <div>
         <div className="content">
           {content.length > 205 ? content.slice(0, 202) + "..." : content}
@@ -20,4 +20,4 @@ function Chat({ chatRoomURL, title, content, isNew, nbrPosts }) {
   );
 }
 
-export default Chat;
+export default Topic;

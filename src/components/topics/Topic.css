@@ -1,4 +1,4 @@
-.message {
+.topic {
   overflow: visible;
   display: grid;
   grid-template-columns: 70px auto 35px;
@@ -7,6 +7,8 @@
   margin-bottom: 0px;
   padding: 10px 5px;
   position: relative;
+  cursor: pointer;
+  user-select: none;
 }
 .badge {
   position: absolute;
@@ -36,7 +38,7 @@
   color: gray !important;
 }
 
-.title-chat {
+.title-topic {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,7 +50,6 @@
   font-size: 20px;
   rotate: -7deg;
 }
-
 .content {
   word-break: break-all;
   font-size: 12px;

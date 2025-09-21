@@ -32,7 +32,7 @@
     height: 160px;
     z-index: 100;
   }
-  .messages-container {
+  .topics-container {
     margin-top: 160px;
     display: flex;
     justify-content: center;

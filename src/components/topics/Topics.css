@@ -1,0 +1,12 @@
+.topics {
+  min-width: 60%;
+  height: calc(100vh - 200px);
+  position: relative;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  &:last-child {
+    margin-bottom: 100px;
+  }
+}
