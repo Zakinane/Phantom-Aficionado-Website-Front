@@ -8,11 +8,14 @@ import NotFound from "./pages/404/NotFound";
 import IM from "./pages/IM/IM";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from "./pages/Main/MainPage";
+import TopicPage from "./pages/Topic/TopicPage";
 
 function App() {
   const protectedRoutes = [
     { path: "/poll", component: <Poll /> },
     { path: "/phorum", component: <Phorums /> },
+    { path: "/topic/:id", component: <TopicPage /> },
+
     // { path: "/im", component: <IM /> },
     // { path: "/notifications", component: <Notifications /> },
     // { path: "/support", component: <Support /> },

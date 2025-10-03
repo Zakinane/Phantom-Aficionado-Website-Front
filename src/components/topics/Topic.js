@@ -1,8 +1,9 @@
 import "./Topic.css";
+import { Link } from "react-router-dom";
 
 function Topic({ topicRoomURL, title, content, isNew, nbrPosts }) {
   return (
-    <a href={topicRoomURL} className="topic">
+    <Link to={topicRoomURL} className="topic">
       {isNew && <span className="badge">NEW</span>}
       <div className="title-topic">{title}</div>
       <div>
@@ -15,8 +16,8 @@ function Topic({ topicRoomURL, title, content, isNew, nbrPosts }) {
         {nbrPosts}
         <br />
         posts
-      </div>  
-    </a>
+      </div>
+    </Link>
   );
 }
 

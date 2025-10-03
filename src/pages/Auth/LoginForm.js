@@ -3,6 +3,7 @@ import Button from "../../components/buttons/AnswerButton";
 
 function LoginForm({ onLogin, switchToSignup }) {
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({ email: "", password: "" });
 
   const handleChange = (e) => {
@@ -12,6 +13,7 @@ function LoginForm({ onLogin, switchToSignup }) {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
       const res = await fetch(`${process.env.REACT_APP_API_URI}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -25,6 +27,7 @@ function LoginForm({ onLogin, switchToSignup }) {
       const data = await res.json();
 
       if (data.token) {
+        setLoading(false)
         // on passe email + token au parent
         onLogin(formData.email, data.token);
       } else {
@@ -86,6 +89,7 @@ function LoginForm({ onLogin, switchToSignup }) {
         </button>
       </div>
       {error && <p>{error}</p>}
+      {loading && <p>Verifying your info (it might take a minute)</p>}
     </div>
   );
 }

@@ -15,7 +15,16 @@ const NewTopic = ({ onClose }) => {
   const handleAddTag = (e) => {
     if (e.key === "Enter" && e.target.value) {
       e.preventDefault();
-      setTags([...tags, e.target.value]);
+      let value = e.target.value.trim();
+
+      // forcer le # devant
+      if (!value.startsWith("#")) {
+        value = "#" + value.replace(/\s+/g, ""); // enlève les espaces
+      } else {
+        value = "#" + value.slice(1).replace(/\s+/g, ""); // normalise même si user tape # avec espace
+      }
+
+      setTags([...tags, value]);
       e.target.value = "";
     }
   };
@@ -30,24 +39,53 @@ const NewTopic = ({ onClose }) => {
     const end = textarea.selectionEnd;
 
     if (start === end) {
-      let insertText = syntax;
-      if (syntax === "Spoiler") insertText = "||||";
-      if (syntax === "Link") insertText = "[](url)";
-      if (syntax === "Blockquote") insertText = "> ";
-      if (syntax === "List") insertText = "- ";
+      let insertText = "";
+      let cursorOffset = 0;
+
+      switch (syntax) {
+        case "Bold":
+          insertText = "****"; // deux ** deux côtés
+          cursorOffset = 2; // curseur au milieu
+          break;
+        case "Italic":
+          insertText = "**"; // un * de chaque côté
+          cursorOffset = 1;
+          break;
+        case "`":
+          insertText = "``";
+          cursorOffset = 1;
+          break;
+        case "Crossed":
+          insertText = "~~~~";
+          cursorOffset = 2;
+          break;
+        case "Spoiler":
+          insertText = "||||";
+          cursorOffset = 2;
+          break;
+        case "Link":
+          insertText = "[](url)";
+          cursorOffset = 1; // entre les [ ]
+          break;
+        case "Blockquote":
+          insertText = "> ";
+          cursorOffset = 2;
+          break;
+        case "List":
+          insertText = "- ";
+          cursorOffset = 2;
+          break;
+        default:
+          insertText = syntax;
+          cursorOffset = syntax.length;
+      }
 
       const newText =
         description.slice(0, start) + insertText + description.slice(end);
       setDescription(newText);
 
       setTimeout(() => {
-        if (syntax === "spoiler")
-          textarea.selectionStart = textarea.selectionEnd = start + 2;
-        else if (syntax === "link")
-          textarea.selectionStart = textarea.selectionEnd = start + 1;
-        else
-          textarea.selectionStart = textarea.selectionEnd =
-            start + insertText.length;
+        textarea.selectionStart = textarea.selectionEnd = start + cursorOffset;
         textarea.focus();
       }, 0);
 
@@ -174,7 +212,7 @@ const NewTopic = ({ onClose }) => {
         <div className="tags-list">
           {tags.map((t, i) => (
             <span key={i} className="tag" onClick={() => handleRemoveTag(i)}>
-              {t} ✕
+              {t} <span className="tag-x">✕</span>
             </span>
           ))}
         </div>

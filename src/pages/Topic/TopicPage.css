@@ -1,0 +1,39 @@
+.topic-page {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #1a1a1a;
+  color: #f0f0f0;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.topic-title {
+  font-size: 2.2rem;
+  margin-bottom: 15px;
+  color: #ff5555;
+  text-align: center;
+}
+
+.topic-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  color: #ddd;
+}
+
+.topic-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  color: #aaa;
+  border-top: 1px solid #333;
+  padding-top: 15px;
+}
+
+.loading {
+  color: yellow;
+  text-align: center;
+  margin-top: 50px;
+  font-size: 1.5rem;
+}
