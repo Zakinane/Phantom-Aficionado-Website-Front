@@ -19,11 +19,11 @@ function LoginForm({ onLogin, switchToSignup, formData, setFormData }) {
         body: JSON.stringify(formData),
       });
 
-      if (!res.ok) {
-        throw new Error("Invalid credentials");
-      }
-
       const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data?.message || "An error occurred");
+      }
 
       if (data.token) {
         onLogin(data.token);
@@ -87,7 +87,7 @@ function LoginForm({ onLogin, switchToSignup, formData, setFormData }) {
       </div>
       <div className="hint">
         {error && <p>{error}</p>}
-        {isLoading && <p>Verifying your info (it might take a minute)</p>}
+        {isLoading && <p>Verifying your info (it can take a minute)</p>}
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import "./NewTopic.css";
 
-const NewTopic = ({ onClose }) => {
+const NewTopic = ({ onClose, onCreated }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [tags, setTags] = useState([]);
@@ -180,6 +180,9 @@ const NewTopic = ({ onClose }) => {
       const data = await res.json();
       console.log("Topic created:", data);
       onClose();
+      if (typeof onCreated === "function") {
+        onCreated();
+      }
     } catch (err) {
       console.error(err);
       alert(err.message);

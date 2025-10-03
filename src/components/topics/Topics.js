@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Topic from "./Topic";
 import "./Topics.css";
 
-function Topics() {
+function Topics({ refreshTrigger }) {
   const [topics, setTopics] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
+  const fetchTopics = () => {
+    setLoading(true);
     fetch(`${process.env.REACT_APP_API_URI}/topics`)
       .then((res) => {
         if (!res.ok) throw new Error("Error while fetching topics");
@@ -22,16 +23,18 @@ function Topics() {
         setError(err.message);
         setLoading(false);
       });
-  }, []);
+  };
 
-  if (loading)
-    return <div className="loadin-message">Loading the topics...</div>;
+  useEffect(() => {
+    fetchTopics();
+  }, [refreshTrigger]); // Reload
+
+  if (loading) return <div className="loading-message">Loading the topics...</div>;
   if (error) return <div className="error-message">Error : {error}</div>;
 
   return (
     <div className="topics">
-      {topics.length === 0 && <div>Aucun topic pour le moment.</div>}
-
+      {topics.length === 0 && <div style={{color:"white"}}>No topics for now..</div>}
       {topics
         .slice()
         .reverse()

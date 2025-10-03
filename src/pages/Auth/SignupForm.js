@@ -19,11 +19,11 @@ function SignupForm({ onSignup, switchToLogin, formData, setFormData }) {
         body: JSON.stringify(formData),
       });
 
-      if (!res.ok) {
-        throw new Error("Signup failed");
-      }
-
       const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data?.message || "An error occurred");
+      }
 
       if (data.token) {
         onSignup(data.token);
@@ -86,7 +86,10 @@ function SignupForm({ onSignup, switchToLogin, formData, setFormData }) {
           Log In!
         </button>
       </div>
-      {error && <p>{error}</p>}
+      <div className="hint">
+        {error && <p>{error}</p>}
+        {isLoading && <p>Verifying your info (it can take a minute)</p>}
+      </div>
     </div>
   );
 }

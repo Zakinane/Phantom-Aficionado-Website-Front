@@ -8,6 +8,12 @@ import NewTopicModal from "../../components/newTopic/NewTopic";
 
 function Phorums() {
   const [showModal, setShowModal] = useState(false);
+  const [refreshTrigger, setRefreshTrigger] = useState(0);
+
+  const handleTopicCreated = () => {
+    setRefreshTrigger((prev) => prev + 1);
+    setShowModal(false);
+  };
 
   return (
     <div className="phorums">
@@ -19,10 +25,15 @@ function Phorums() {
       </div>
 
       <div className="topics-container">
-        <Topics />
+        <Topics refreshTrigger={refreshTrigger} />
       </div>
 
-      {showModal && <NewTopicModal onClose={() => setShowModal(false)} />}
+      {showModal && (
+        <NewTopicModal
+          onClose={() => setShowModal(false)}
+          onCreated={handleTopicCreated}
+        />
+      )}
     </div>
   );
 }
