@@ -1,9 +1,9 @@
 import { useState } from "react";
 import Button from "../../components/buttons/AnswerButton";
 
-function SignupForm({ onSignup, switchToLogin }) {
+function SignupForm({ onSignup, switchToLogin, formData, setFormData }) {
   const [error, setError] = useState("");
-  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -12,6 +12,7 @@ function SignupForm({ onSignup, switchToLogin }) {
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
+      setIsLoading(true);
       const res = await fetch(`${process.env.REACT_APP_API_URI}/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -25,13 +26,14 @@ function SignupForm({ onSignup, switchToLogin }) {
       const data = await res.json();
 
       if (data.token) {
-        // On envoie email + token au parent (Auth)
-        onSignup(formData.email, data.token);
+        onSignup(data.token);
       } else {
         setError("No token received from server");
       }
     } catch (err) {
       setError("Error: " + err.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -42,7 +44,6 @@ function SignupForm({ onSignup, switchToLogin }) {
       </div>
       <form onSubmit={handleSignUp}>
         <div className="form-container">
-          {/* EMAIL */}
           <div className="field">
             <div className="field-container signup-email">
               <input
@@ -56,7 +57,6 @@ function SignupForm({ onSignup, switchToLogin }) {
               />
             </div>
           </div>
-          {/* PASSWORD */}
           <div className="field">
             <div className="field-container signup-password">
               <input
@@ -73,7 +73,7 @@ function SignupForm({ onSignup, switchToLogin }) {
           </div>
           <Button
             type="submit"
-            text="CREATE ACCOUNT"
+            text={isLoading ? "Loading..." : "CREATE ACCOUNT"}
             shape="NoTail"
             color="#efdc0bff"
             isComingLeft={false}

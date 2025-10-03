@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import starVideo from "../../assets/video/Red-Star-Looping-Background.mp4"
+import starVideo from "../../assets/video/Red-Star-Looping-Background.mp4";
 
 import "./Auth.css";
 
@@ -12,7 +12,9 @@ function Auth() {
 
   const [isLogin, setIsLogin] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [email, setEmail] = useState("");
+
+  // partagé entre Login et Signup
+  const [formData, setFormData] = useState({ email: "", password: "" });
 
   const [token, setToken] = useState(localStorage.getItem("token"));
 
@@ -24,29 +26,19 @@ function Auth() {
     }
   }, [token]);
 
-  const handleLogin = (userEmail, newToken) => {
-    setEmail(userEmail);
+  const handleLogin = (newToken) => {
     setIsLoggedIn(true);
     localStorage.setItem("token", newToken);
-    localStorage.setItem("email", userEmail);
+    localStorage.setItem("email", formData.email);
     setToken(newToken);
   };
 
-  const handleSignup = (userEmail, newToken) => {
-    setEmail(userEmail);
+  const handleSignup = (newToken) => {
     setIsLoggedIn(true);
     localStorage.setItem("token", newToken);
-    localStorage.setItem("email", userEmail);
+    localStorage.setItem("email", formData.email);
     setToken(newToken);
   };
-
-  // const handleLogout = () => {
-  //   setIsLoggedIn(false);
-  //   setIsLogin(true);
-  //   setEmail("");
-  //   localStorage.removeItem("token");
-  //   setToken(null);
-  // };
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -56,8 +48,12 @@ function Auth() {
 
   return (
     <>
-      <video autoPlay loop muted playsInline
-      src={starVideo}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        src={starVideo}
         id="star-BG"
         className={isLogin ? "white" : "red"}
         alt="Pretty stars"
@@ -66,15 +62,18 @@ function Auth() {
       <div id="cut" alt="cut"></div>
       <div id="cut-black" alt="black stupid square"></div>
       <section id="main-view">
-        {/* FORMS */}
         {!isLoggedIn && isLogin && (
           <LoginForm
+            formData={formData}
+            setFormData={setFormData}
             onLogin={handleLogin}
             switchToSignup={() => setIsLogin(false)}
           />
         )}
         {!isLoggedIn && !isLogin && (
           <SignupForm
+            formData={formData}
+            setFormData={setFormData}
             onSignup={handleSignup}
             switchToLogin={() => setIsLogin(true)}
           />

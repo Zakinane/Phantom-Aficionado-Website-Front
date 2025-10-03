@@ -1,10 +1,9 @@
 import { useState } from "react";
 import Button from "../../components/buttons/AnswerButton";
 
-function LoginForm({ onLogin, switchToSignup }) {
+function LoginForm({ onLogin, switchToSignup, formData, setFormData }) {
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -13,7 +12,7 @@ function LoginForm({ onLogin, switchToSignup }) {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      setLoading(true);
+      setIsLoading(true);
       const res = await fetch(`${process.env.REACT_APP_API_URI}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -27,14 +26,14 @@ function LoginForm({ onLogin, switchToSignup }) {
       const data = await res.json();
 
       if (data.token) {
-        setLoading(false)
-        // on passe email + token au parent
-        onLogin(formData.email, data.token);
+        onLogin(data.token);
       } else {
         setError("No token received from server");
       }
     } catch (err) {
       setError("Error: " + err.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -45,7 +44,6 @@ function LoginForm({ onLogin, switchToSignup }) {
       </div>
       <form onSubmit={handleLogin}>
         <div className="form-container">
-          {/* EMAIL */}
           <div className="field">
             <div className="field-container login-email">
               <input
@@ -59,7 +57,6 @@ function LoginForm({ onLogin, switchToSignup }) {
               />
             </div>
           </div>
-          {/* PASSWORD */}
           <div className="field">
             <div className="field-container login-password">
               <input
@@ -76,7 +73,7 @@ function LoginForm({ onLogin, switchToSignup }) {
           </div>
           <Button
             type="submit"
-            text="CONNECT"
+            text={isLoading ? "Loading..." : "CONNECT"}
             shape="Zigzag"
             color="#ce0b0bff"
           />
@@ -88,8 +85,10 @@ function LoginForm({ onLogin, switchToSignup }) {
           Sign up!
         </button>
       </div>
-      {error && <p>{error}</p>}
-      {loading && <p>Verifying your info (it might take a minute)</p>}
+      <div className="hint">
+        {error && <p>{error}</p>}
+        {isLoading && <p>Verifying your info (it might take a minute)</p>}
+      </div>
     </div>
   );
 }
