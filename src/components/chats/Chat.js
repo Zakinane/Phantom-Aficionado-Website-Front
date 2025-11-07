@@ -1,3 +1,5 @@
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import "./Chat.css";
 
 function Chat({ chatRoomURL, title, content, isNew, nbrPosts }) {
@@ -7,7 +9,9 @@ function Chat({ chatRoomURL, title, content, isNew, nbrPosts }) {
       <div className="title-chat">{title}</div>
       <div>
         <div className="content">
-          {content.length > 205 ? content.slice(0, 202) + "..." : content}
+          <Markdown remarkPlugins={[remarkGfm]}>
+            {content.length > 205 ? content.slice(0, 202) + "..." : content}
+          </Markdown>
         </div>
         {isNew && <div className="content1"></div>}
       </div>
@@ -15,7 +19,7 @@ function Chat({ chatRoomURL, title, content, isNew, nbrPosts }) {
         {nbrPosts}
         <br />
         posts
-      </div>  
+      </div>
     </a>
   );
 }

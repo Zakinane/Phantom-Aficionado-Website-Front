@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import "./TopicPage.css";
 
 function TopicPage() {
@@ -18,11 +20,15 @@ function TopicPage() {
   return (
     <div className="topic-page">
       <h1 className="topic-title">{topic.title}</h1>
-      <p className="topic-description">{topic.description}</p>
+      <p className="topic-description">
+        <Markdown remarkPlugins={[remarkGfm]}>
+         {topic.description}
+        </Markdown>
+      </p>
 
       <div className="topic-meta">
         <span>
-          <strong>Created:</strong>{" "}
+          <strong>Created on:</strong>{" "}
           {new Date(topic.creationDate).toLocaleString()}
         </span>
         <span>
@@ -60,7 +66,7 @@ function TopicPage() {
           <h3>Tags</h3>
           <ul>
             {topic.tags.map((tag, idx) => (
-              <li key={idx}>#{tag}</li>
+              <li key={idx}>{tag}</li>
             ))}
           </ul>
         </div>
