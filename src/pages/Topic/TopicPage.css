@@ -5,7 +5,7 @@
   background: #1a1a1a;
   color: #f0f0f0;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 .topic-title {
@@ -30,11 +30,29 @@
   border-top: 1px solid #333;
   padding-top: 15px;
 }
-
-.participant{
+.topic-meta2 {
   display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  color: #aaa;
+  padding-top: 15px;
+  align-items: flex-start;
+}
+
+.participant {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 5px;
+  margin: 0 10px 0px 0px;
+}
+.topic-participants {
+  display: flex;
+  flex-direction: column !important;
+}
+.topic-tags {
+  display: flex;
+  flex-direction: column;
 }
 
 .loading {
