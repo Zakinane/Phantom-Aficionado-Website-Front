@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
+import { UserProvider } from "../../context/UserContext";
 import Sidebar from "../../components/sideBar/Sidebar";
 import Shortcuts from "../../components/_shortcuts/Shortcuts";
 import "./MainPage.css";
@@ -14,7 +15,7 @@ const MainPage = () => {
       return saved !== null ? JSON.parse(saved) : false;
     } catch (e) {
       console.error("Invalid sidebar-collapsed value in localStorage:", e);
-      return false; // fallback si parse échoue
+      return false;
     }
   });
 
@@ -27,13 +28,15 @@ const MainPage = () => {
   }, [token, navigate]);
 
   return (
-    <div className="main-page">
-      <Shortcuts setCollapsed={setCollapsedBar} />
-      <Sidebar collapsed={collapsedBar} setCollapsed={setCollapsedBar} />
-      <div className="content-area">
-        <Outlet />
+    <UserProvider>
+      <div className="main-page">
+        <Shortcuts setCollapsed={setCollapsedBar} />
+        <Sidebar collapsed={collapsedBar} setCollapsed={setCollapsedBar} />
+        <div className="content-area">
+          <Outlet />
+        </div>
       </div>
-    </div>
+    </UserProvider>
   );
 };
 

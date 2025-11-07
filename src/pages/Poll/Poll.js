@@ -23,7 +23,6 @@ function Poll({ token }) {
 
         if (res.data.userVote) setUserVoted(true);
       } catch (err) {
-        console.error("Erreur lors du chargement du poll :", err);
         setPoll({
           question: "Do you believe in the Phantom Thieves?",
           votesCount: { yes: 0, no: 0 },

@@ -31,6 +31,12 @@
   padding-top: 15px;
 }
 
+.participant{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
 .loading {
   color: yellow;
   text-align: center;

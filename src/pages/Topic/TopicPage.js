@@ -41,7 +41,7 @@ function TopicPage() {
           <h3>Participants</h3>
           <ul>
             {topic.participants.map((user) => (
-              <li key={user._id}>
+              <li key={user._id} className="participant">
                 <img
                   src={user.avatar}
                   alt={user.username}

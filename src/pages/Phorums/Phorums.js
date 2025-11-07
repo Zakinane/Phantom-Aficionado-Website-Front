@@ -17,7 +17,9 @@ function Phorums() {
 
   return (
     <div className="phorums">
-      <Title title={"PHORUM"} redIndex={1} />
+      <div style={{position:"fixed",top:"60px", zIndex:120}}>
+        <Title title={"PHORUM"} redIndex={1} />
+      </div>
       <AddTopicButton onClick={() => setShowModal(true)} />
 
       <div className="background-title">

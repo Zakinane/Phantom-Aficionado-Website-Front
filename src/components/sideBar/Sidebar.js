@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Title from "../title/Title";
+import { useUser } from "../../context/UserContext";
 import "./Sidebar.css";
 
 function Sidebar({ collapsed, setCollapsed }) {
+  const { user } = useUser();
   const [tooltip, setTooltip] = useState(null);
   const navigate = useNavigate();
 
@@ -33,21 +35,33 @@ function Sidebar({ collapsed, setCollapsed }) {
     }
   };
 
-  const handleMouseLeave = () => setTooltip(null);
+  const handleMouseLeave = () => {
+    setTooltip(null);
+  };
 
   const handleDisconnect = () => {
-    localStorage.removeItem("token"); // supprimer le token
+    localStorage.removeItem("token");
     navigate("/");
   };
 
   return (
     <>
       <aside className={`sidebar ${collapsed ? "collapsed" : ""}`}>
-        <div className="profile-icon"></div>
+        <div>
+          <div className="profile-icon">
+            <img src={user?.avatar} alt="pfp" />
+          </div>
+          {user && !collapsed && (
+            <p>
+              Hello <b>{user.username}</b> !
+            </p>
+          )}
+        </div>
 
         <nav className="menu">
           {menuItems.map((item) => (
             <button
+              style={{ width: "100%" }}
               key={item.label}
               onClick={() => navigate(item.href)}
               onMouseEnter={(e) => handleMouseEnter(e, item.label)}
@@ -59,9 +73,11 @@ function Sidebar({ collapsed, setCollapsed }) {
             </button>
           ))}
         </nav>
+
         <button className="toggle" onClick={() => setCollapsed(!collapsed)}>
           {collapsed ? "➡️" : "⬅️"}
         </button>
+
         {!collapsed && (
           <button className="disconnect-btn" onClick={handleDisconnect}>
             Disconnect
@@ -71,13 +87,20 @@ function Sidebar({ collapsed, setCollapsed }) {
 
       {tooltip && (
         <div
-          className="tooltip"
+          className={`tooltip visible`}
           style={{
-            top: tooltip.y,
-            left: tooltip.x,
+            top: tooltip.y - 20,
+            left: tooltip.x + 20,
           }}
         >
           <Title title={tooltip.text} redIndex={1} />
+          <p className="tooltip-desc">
+            {{
+              PHORUM: "Talk about the latest new !!",
+              POLL: "Vote on latest poll !!",
+              IM: "Chat with your teamates !",
+            }[tooltip.text] || `Click to go to ${tooltip.text}`}
+          </p>
         </div>
       )}
     </>

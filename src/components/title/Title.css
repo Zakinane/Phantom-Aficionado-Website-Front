@@ -1,12 +1,11 @@
 .title {
   user-select: none;
-  z-index: 120;
-  position: fixed;
+  position: relative;
   padding: 20px;
   left: calc(auto + 20px);
-  top: 60px;
+  top: auto;
   color: white;
-  font-weight:bold;
+  font-weight: bold;
   font-size: 80px;
   rotate: -7deg;
 }
