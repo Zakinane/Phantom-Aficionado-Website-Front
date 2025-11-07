@@ -56,7 +56,9 @@ function Poll({ token }) {
 
   return (
     <div className="poll">
-      <div className="title-container">
+      <div
+        style={{ position: "fixed", top: "60px", width: "450px", zIndex: 120 }}
+      >
         <Title title={`POLL \nOF THE WEEK`} redIndex={2} />
       </div>
 
@@ -112,12 +114,14 @@ function Poll({ token }) {
         </div>
       </div>
 
-      <div className="scroll-message">Scroll to read comments</div>
-      <div className="scroll-btn-container">
-        <div className="scroll-btn">
-          <img alt="" width="40px" src="../images/icons/arrow.png" />
+      {/* <div className="scroll">
+        <div className="scroll-message">Scroll to read comments</div>
+        <div className="scroll-btn-container">
+          <div className="scroll-btn">
+            <img alt="" width="40px" src="../images/icons/arrow.png" />
+          </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
