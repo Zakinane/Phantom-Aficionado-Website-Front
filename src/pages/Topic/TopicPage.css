@@ -1,5 +1,7 @@
 .topic-page {
+  overflow-y: auto;
   max-width: 800px;
+  height: 90vh;
   margin: 40px auto;
   padding: 30px;
   background: #1a1a1a;
@@ -39,6 +41,15 @@
   align-items: flex-start;
 }
 
+.post-form {
+  height: 100px;
+  width: 100%;
+}
+#textarea-post{
+  width: calc(100% - 20px);
+  border-radius: 10px;
+}
+
 .participant {
   display: flex;
   flex-direction: column;
@@ -60,4 +71,13 @@
   text-align: center;
   margin-top: 50px;
   font-size: 1.5rem;
+}
+.respond-button {
+  z-index: 1000;
+}
+
+.topic-posts-container {
+  max-height: 400px;
+  margin-top: 10px;
+  padding-right: 8px;
 }

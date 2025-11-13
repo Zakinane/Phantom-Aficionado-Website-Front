@@ -76,7 +76,7 @@ body {
 #goToSite-btn {
   cursor: pointer;
 }
-form {
+form#form-auth {
   z-index: 100;
   display: flex;
   flex-direction: column;

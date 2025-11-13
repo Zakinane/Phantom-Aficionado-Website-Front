@@ -42,7 +42,7 @@ function SignupForm({ onSignup, switchToLogin, formData, setFormData }) {
       <div className="title-log-sign">
         <span className="rotate-txt">SIGN UP</span>
       </div>
-      <form onSubmit={handleSignUp}>
+      <form id="form-auth" onSubmit={handleSignUp}>
         <div className="form-container">
           <div className="field">
             <div className="field-container signup-email">

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useUser } from "../../context/UserContext";
 import Prompt from "../../components/prompt/Prompt";
+import Post from "../../components/post/Post";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import "./TopicPage.css";
@@ -147,34 +148,56 @@ function TopicPage() {
           </div>
         )}
       </div>
+
       {!topic.isClosed && (
         <form className="post-form" onSubmit={addPost}>
           <textarea
+            id="textarea-post"
             placeholder="Write your response..."
             value={newPost}
             onChange={(e) => setNewPost(e.target.value)}
           />
-          <button type="submit">Respond</button>
+          <button id="respond-button" type="submit">
+            Respond
+          </button>
         </form>
       )}
 
       <div className="topic-posts">
         <h3>Posts</h3>
-        {posts.length === 0 ? (
-          <p className="no-posts">No posts yet.</p>
-        ) : (
-          posts.map((msg) => (
-            <div key={msg._id} className="post">
-              <div className="post-header">
-                <strong>{msg.author?.username}</strong>{" "}
-                <span>{new Date(msg.createdAt).toLocaleString()}</span>
-              </div>
-              <div className="post-content">
-                <Markdown remarkPlugins={[remarkGfm]}>{msg.content}</Markdown>
-              </div>
-            </div>
-          ))
-        )}
+        <div className="topic-posts-container">
+          {posts.length === 0 ? (
+            <p className="no-posts">No posts yet.</p>
+          ) : (
+            posts.map(
+              (msg) =>
+                msg.createdAt && (
+                  <div key={msg._id} className="post">
+                    <div className="post-header">
+                      {msg.author?.avatar && (
+                        <img
+                          src={msg.author.avatar}
+                          alt={msg.author.username}
+                          className="post-avatar"
+                        />
+                      )}
+                      <div>
+                        <strong>{msg.author?.username}</strong>{" "}
+                        <span className="post-date">
+                          {new Date(msg.createdAt).toLocaleString()}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="post-content">
+                      <Markdown remarkPlugins={[remarkGfm]}>
+                        {msg.content}
+                      </Markdown>
+                    </div>
+                  </div>
+                ) // A REGLER URGENT
+            )
+          )}
+        </div>
       </div>
 
       {user?._id === topic.creator?._id && !topic.isClosed && (

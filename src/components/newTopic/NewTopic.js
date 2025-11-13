@@ -178,7 +178,6 @@ const NewTopic = ({ onClose, onCreated }) => {
         throw new Error(errorData.error || "Failed to create topic");
       }
       const data = await res.json();
-      console.log("Topic created:", data);
       onClose();
       if (typeof onCreated === "function") {
         onCreated();
