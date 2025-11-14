@@ -5,6 +5,7 @@ import Title from "../../components/title/Title";
 import AddTopicButton from "../../components/buttons/AddTopicButton";
 import SearchBar from "../../components/searchBar/SearchBar";
 import NewTopicModal from "../../components/newTopic/NewTopic";
+import LiveComments from "../../components/liveComments/LiveComments";
 
 function Phorums() {
   const [showModal, setShowModal] = useState(false);
@@ -17,7 +18,7 @@ function Phorums() {
 
   return (
     <div className="phorums">
-      <div style={{position:"fixed",top:"60px", zIndex:120}}>
+      <div style={{ position: "fixed", top: "60px", zIndex: 120 }}>
         <Title title={"PHORUM"} redIndex={1} />
       </div>
       <AddTopicButton onClick={() => setShowModal(true)} />
@@ -28,6 +29,16 @@ function Phorums() {
 
       <div className="topics-container">
         <Topics refreshTrigger={refreshTrigger} />
+      </div>
+      <div className="live-comments-container">
+        <div className="live-comments-background">
+          <LiveComments
+            subtitle={"A real good test to see how it works"}
+            username={"Zak"}
+            message={"Yo les gars"}
+            percent={30}
+          />
+        </div>
       </div>
 
       {showModal && (

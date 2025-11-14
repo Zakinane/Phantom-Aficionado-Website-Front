@@ -6,13 +6,13 @@ function SearchBar() {
       <div className="search-bar-border" />
       <div className="search-bar">
         <input type="text" placeholder="Search" />
-        <a href=".">
+        {/* <a href=".">
           <img
             alt=""
             className="search-icon"
             src="../../assets/images/monocle.png"
           />
-        </a>
+        </a> */}
       </div>
     </>
   );

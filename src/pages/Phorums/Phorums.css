@@ -24,16 +24,48 @@
     cursor: pointer;
     width: auto;
   }
-
-  .background-title {
+  .live-comments-container {
     position: fixed;
-    background-color: black;
+    right: 30px;
+    bottom: 20px;
+    padding-bottom: 20px;
+    width: auto;
+    height: auto;
+    overflow: visible;
+  }
+  .live-comments-background {
+    position: relative;
+    overflow: visible;
+    width: 400px;
+    padding-bottom: 20px;
+    height: calc(100% - 20px);
+  }
+
+  .live-comments-background > * {
+    position: relative;
+    z-index: 2;
+  }
+  .live-comments-background::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    scale: 1.2;
+    background: rgba(124, 124, 124, 0.354);
+    clip-path: polygon(15px 49px, 8.74% 86.65%, 95.2% 100.46%, 91.67% 4.37%);
+    z-index: 1;
+  }
+
+  /* .background-title {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    background-color: rgb(0, 0, 0);
     width: 100vw;
     height: 160px;
     z-index: 100;
-  }
+  } */
   .topics-container {
-    margin-top: 160px;
+    margin-top: 82px;
     display: flex;
     justify-content: center;
     padding: 20px;
