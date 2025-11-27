@@ -10,6 +10,7 @@ import LiveComments from "../../components/liveComments/LiveComments";
 function Phorums() {
   const [showModal, setShowModal] = useState(false);
   const [refreshTrigger, setRefreshTrigger] = useState(0);
+  const [searchValue, setSearchValue] = useState("");
 
   const handleTopicCreated = () => {
     setRefreshTrigger((prev) => prev + 1);
@@ -24,11 +25,11 @@ function Phorums() {
       <AddTopicButton onClick={() => setShowModal(true)} />
 
       <div className="background-title">
-        <SearchBar />
+        <SearchBar value={searchValue} onChange={setSearchValue} />{" "}
       </div>
 
       <div className="topics-container">
-        <Topics refreshTrigger={refreshTrigger} />
+        <Topics refreshTrigger={refreshTrigger} search={searchValue} />{" "}
       </div>
       <div className="live-comments-container">
         <div className="live-comments-background">

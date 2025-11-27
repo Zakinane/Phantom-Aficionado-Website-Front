@@ -8,6 +8,7 @@ import "./MainPage.css";
 const MainPage = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
+  const [authChecked, setAuthChecked] = useState(false);
 
   const [collapsedBar, setCollapsedBar] = useState(() => {
     try {
@@ -24,8 +25,27 @@ const MainPage = () => {
   }, [collapsedBar]);
 
   useEffect(() => {
-    if (!token) navigate("/authentication"); // redirige si pas de token
+    if (!token) {
+      navigate("/authentication"); // si pas de token
+      return;
+    }
+
+    fetch(`${process.env.REACT_APP_API_URI}/me`, {
+      method: "GET",
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("Token invalid or expired");
+      })
+      .then(() => setAuthChecked(true))
+      .catch((err) => {
+        console.error("Auth verify failed:", err);
+        localStorage.removeItem("token");
+        navigate("/authentication");
+      });
   }, [token, navigate]);
+
+  if (!authChecked) return null;
 
   return (
     <UserProvider>

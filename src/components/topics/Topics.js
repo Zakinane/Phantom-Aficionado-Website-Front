@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Topic from "./Topic";
 import "./Topics.css";
 
-function Topics({ refreshTrigger }) {
+function Topics({ refreshTrigger, search }) {
   const [topics, setTopics] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -27,15 +27,32 @@ function Topics({ refreshTrigger }) {
 
   useEffect(() => {
     fetchTopics();
-  }, [refreshTrigger]); // Reload
+  }, [refreshTrigger]);
 
-  if (loading) return <div className="loading-message">Loading the topics...</div>;
+  const filteredTopics = topics.filter(
+    (t) =>
+      t.title.toLowerCase().includes(search.toLowerCase()) ||
+      (t.description &&
+        t.description.toLowerCase().includes(search.toLowerCase()))
+  );
+
+  const topicsToDisplay =
+    search.trim() === "" ? topics : filteredTopics;
+
+  if (loading)
+    return <div className="loading-message">Loading the topics...</div>;
+
   if (error) return <div className="error-message">Error : {error}</div>;
 
   return (
     <div className="topics">
-      {topics.length === 0 && <div style={{color:"white"}}>No topics for now..</div>}
-      {topics
+      {topicsToDisplay.length === 0 && (
+        <div style={{ color: "white" }}>
+          No matching topics...
+        </div>
+      )}
+
+      {topicsToDisplay
         .slice()
         .reverse()
         .map((topic) => (
@@ -48,7 +65,7 @@ function Topics({ refreshTrigger }) {
               new Date(topic.lastActivity) >
               new Date(Date.now() - 24 * 60 * 60 * 1000)
             }
-            nbrPosts={topic.nbrPosts}
+            nbrPosts={topic.posts.length + 1}
           />
         ))}
     </div>

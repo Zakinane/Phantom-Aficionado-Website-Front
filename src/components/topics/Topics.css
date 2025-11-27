@@ -1,5 +1,5 @@
 .topics {
-  min-width: 60%;
+  width: 100%;
   height: calc(100vh - 200px);
   position: relative;
   overflow: visible;
@@ -9,4 +9,4 @@
   &:last-child {
     margin-bottom: 100px;
   }
-}
+} 

@@ -1,7 +1,7 @@
 .topic {
   overflow: visible;
   display: grid;
-  grid-template-columns: 70px auto 35px;
+  grid-template-columns: 60px auto 35px;
   color: #fff;
   text-decoration: none;
   margin-bottom: 0px;
@@ -25,7 +25,7 @@
 .badge::before {
   content: "";
   position: absolute;
-  inset: 5px; 
+  inset: 5px;
   background: rgb(255, 255, 255);
   clip-path: polygon(0 0, 100% 0, 86% 92%, 18% 93%);
   z-index: -1;
@@ -39,6 +39,8 @@
 }
 
 .title-topic {
+  z-index: 9;
+  word-break: keep-all;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,37 +48,36 @@
   font-family: "Earwig factory";
   color: black;
   background-color: white;
-  padding: 2px;
+  padding: 10px 20px;
   font-size: 20px;
   rotate: -7deg;
+
+  width: max-content;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 .content {
-  word-break: break-all;
-  font-size: 12px;
   position: relative;
-  clip-path: polygon(0 16%, 100% 0, 91% 100%, 6% 86%);
   display: flex;
   align-items: center;
-  height: 100%;
-  padding: 5px 20px;
+  justify-content: center;
+  padding: 5px 50px;
   background-color: #fa1111a1;
-  max-width: 100vw;
-  z-index: 10;
+  clip-path: polygon(0 16%, 100% 0, 91% 100%, 6% 86%);
+  z-index: 8;
 }
 
-.content1 {
+.content-bg {
+  position: absolute;
+  top: 16px;
+  left: 58px;
+  width: 90%;
+  height: 60%;
   clip-path: polygon(0 21%, 89% 0, 95% 97%, 6% 88%);
-  font-size: 12px;
-  position: relative;
-  top: -43px;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  padding: 5px 20px;
-  rotate: 5deg;
   background-color: #fa1111a1;
-  max-width: 100vw;
+  rotate: 2deg;
+  z-index: -1;
 }
 
 .nbr-posts {

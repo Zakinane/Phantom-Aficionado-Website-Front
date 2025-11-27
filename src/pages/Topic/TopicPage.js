@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useUser } from "../../context/UserContext";
 import Prompt from "../../components/prompt/Prompt";
-import Post from "../../components/post/Post";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import "./TopicPage.css";
@@ -91,9 +90,9 @@ function TopicPage() {
   return (
     <div className="topic-page">
       <h1 className="topic-title">{topic.title}</h1>
-      <p className="topic-description">
+      <div className="topic-description">
         <Markdown remarkPlugins={[remarkGfm]}>{topic.description}</Markdown>
-      </p>
+      </div>  
 
       <div className="topic-meta">
         <span>
@@ -104,7 +103,7 @@ function TopicPage() {
           <strong>Creator:</strong> {topic.creator?.username}
         </span>
         <span>
-          <strong>Posts:</strong> {posts.length}
+          <strong>Posts:</strong> {posts.length + 1}
         </span>
         <span>
           <strong>Participants:</strong> {topic.nbrPosters}

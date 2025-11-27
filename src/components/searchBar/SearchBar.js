@@ -1,21 +1,19 @@
-import "./SearchBar.css"
+import "./SearchBar.css";
 
-function SearchBar() {
+function SearchBar({ value, onChange }) {
   return (
     <>
       <div className="search-bar-border" />
       <div className="search-bar">
-        <input type="text" placeholder="Search" />
-        {/* <a href=".">
-          <img
-            alt=""
-            className="search-icon"
-            src="../../assets/images/monocle.png"
-          />
-        </a> */}
+        <input
+          type="text"
+          placeholder="Search"
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+        />
       </div>
     </>
   );
 }
 
-export default SearchBar
+export default SearchBar;

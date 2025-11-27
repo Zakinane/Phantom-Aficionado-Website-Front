@@ -25,6 +25,8 @@
     width: auto;
   }
   .live-comments-container {
+    z-index: 1000;
+
     position: fixed;
     right: 30px;
     bottom: 20px;
@@ -50,7 +52,7 @@
     position: absolute;
     inset: 0;
     scale: 1.2;
-    background: rgba(124, 124, 124, 0.354);
+    background: rgba(39, 39, 39, 0.75);
     clip-path: polygon(15px 49px, 8.74% 86.65%, 95.2% 100.46%, 91.67% 4.37%);
     z-index: 1;
   }
