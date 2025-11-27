@@ -28,7 +28,11 @@
 }
 
 .post-content {
+  hyphens: auto;
+  text-wrap: wrap;
+  word-wrap: break-word;
   color: #ddd;
   font-size: 1rem;
   line-height: 1.4;
 }
+
