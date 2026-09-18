@@ -22,7 +22,6 @@ function Post(msg) {
   return (
     <article className="post">
 
-      {/* USER */}
       <div className="post-user">
 
         <div className="post-avatar-container">
