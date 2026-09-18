@@ -2,7 +2,7 @@
   user-select: none;
   position: relative;
   padding: 20px;
-  left: calc(auto + 20px);
+  left: auto;
   top: auto;
   color: white;
   font-weight: bold;
