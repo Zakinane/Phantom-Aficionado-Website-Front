@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Title from "../../components/title/Title";
 import { useUser } from "../../context/UserContext";
 import "./Poll.css";
 
@@ -55,12 +54,7 @@ function Poll() {
   }, [token, API_URL]);
 
   const handleVote = async (choice) => {
-    if (
-      userVoted ||
-      voting ||
-      !poll?._id ||
-      !token
-    ) {
+    if (userVoted || voting || !poll?._id || !token) {
       return;
     }
 
@@ -77,7 +71,7 @@ function Poll() {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
 
       setPercentage(res.data.percentage);
@@ -94,10 +88,7 @@ function Poll() {
     } catch (err) {
       console.error("Vote error:", err);
 
-      alert(
-        err.response?.data?.message ||
-          "Unable to submit your vote."
-      );
+      alert(err.response?.data?.message || "Unable to submit your vote.");
     } finally {
       setVoting(false);
     }
@@ -126,7 +117,7 @@ function Poll() {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
 
       setPoll(res.data);
@@ -138,21 +129,14 @@ function Poll() {
     } catch (err) {
       console.error("Create poll error:", err);
 
-      alert(
-        err.response?.data?.message ||
-          "Failed to create poll."
-      );
+      alert(err.response?.data?.message || "Failed to create poll.");
     } finally {
       setCreating(false);
     }
   };
 
   if (loading) {
-    return (
-      <div style={{ color: "white" }}>
-        Loading...
-      </div>
-    );
+    return <div style={{ color: "white" }}>Loading...</div>;
   }
 
   if (!token || !user) {
@@ -170,7 +154,6 @@ function Poll() {
     return (
       <div className="poll">
         <div className="poll-container">
-
           <h2>No active poll</h2>
 
           {user.role === "admin" && (
@@ -186,21 +169,15 @@ function Poll() {
 
               {showCreatePoll && (
                 <div className="create-poll-form">
-
                   <input
                     type="text"
                     placeholder="Enter poll question..."
                     value={newQuestion}
-                    onChange={(e) =>
-                      setNewQuestion(e.target.value)
-                    }
+                    onChange={(e) => setNewQuestion(e.target.value)}
                     maxLength={200}
                   />
 
-                  <button
-                    onClick={handleCreatePoll}
-                    disabled={creating}
-                  >
+                  <button onClick={handleCreatePoll} disabled={creating}>
                     {creating ? "CREATING..." : "CREATE"}
                   </button>
 
@@ -213,12 +190,10 @@ function Poll() {
                   >
                     CANCEL
                   </button>
-
                 </div>
               )}
             </>
           )}
-
         </div>
       </div>
     );
@@ -229,7 +204,6 @@ function Poll() {
    */
   return (
     <div className="poll">
-
       <div
         style={{
           position: "fixed",
@@ -238,14 +212,10 @@ function Poll() {
           zIndex: 120,
         }}
       >
-        <Title
-          title={`POLL \nOF THE WEEK`}
-          redIndex={2}
-        />
+        <div className="poll-header">POLL OF THE WEEK</div>
       </div>
 
       <div className="poll-container">
-
         <div className="poll-question">
           <p>
             <span
@@ -262,7 +232,6 @@ function Poll() {
         </div>
 
         <div className="poll-result">
-
           <span
             style={{
               fontSize: 45,
@@ -302,7 +271,6 @@ function Poll() {
           <center>
             <hr />
           </center>
-
         </div>
 
         <div className="poll-bar-border">
@@ -317,37 +285,25 @@ function Poll() {
         </div>
 
         <div className="poll-options">
-
           <div
-            className={`poll-btn-border ${
-              userVoted ? "disabled" : ""
-            }`}
+            className={`poll-btn-border ${userVoted ? "disabled" : ""}`}
             id="poll-btn-yes"
             onClick={() => handleVote("yes")}
           >
-            <div
-              className="poll-btn"
-              id="poll-btn-yes-inner"
-            >
+            <div className="poll-btn" id="poll-btn-yes-inner">
               {voting ? "..." : "YES"}
             </div>
           </div>
 
           <div
-            className={`poll-btn-border ${
-              userVoted ? "disabled" : ""
-            }`}
+            className={`poll-btn-border ${userVoted ? "disabled" : ""}`}
             id="poll-btn-no"
             onClick={() => handleVote("no")}
           >
-            <div
-              className="poll-btn"
-              id="poll-btn-no-inner"
-            >
+            <div className="poll-btn" id="poll-btn-no-inner">
               {voting ? "..." : "NO"}
             </div>
           </div>
-
         </div>
 
         {userVoted && (
@@ -361,7 +317,6 @@ function Poll() {
             You already voted on this poll.
           </p>
         )}
-
       </div>
     </div>
   );

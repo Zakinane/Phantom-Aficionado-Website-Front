@@ -2,93 +2,193 @@
   background-color: #bf0a0a;
   background-image: url(../../assets/images/background-poll.png);
   background-position: center;
+  background-size: cover;
+
   display: flex;
   align-items: center;
-  color: white;
+  justify-content: center;
+
+  position: relative;
+  min-height: 100%;
   height: 100%;
 
-  #POLL {
-    position: fixed;
-    top: -320px;
-    left: -80px;
-    z-index: 2;
-  }
+  color: white;
+  overflow: hidden;
+}
 
-  .poll-container {
-    width: 95%;
-    text-align: center;
-    padding: 20px;
-    border-radius: 15px;
-    position: relative;
-  }
+/* =========================
+   HEADER
+========================= */
 
-  .poll-question {
-    margin-top: 20px;
-    font-size: 18px;
-    font-weight: bold;
-  }
+.poll-header {
+  position: absolute;
 
-  .poll-result {
-    font-size: 40px;
-    font-weight: bold;
-    margin: 20px 0;
-    color: #fbc02d;
-  }
-  .poll-percentage {
-    background: linear-gradient(rgb(252, 206, 4), rgb(255, 128, 1));
-    background-clip: text;
-    color: transparent;
-  }
+  top: 35px;
+  left: 35px;
 
-  .poll-bar {
-    clip-path: polygon(1% 13%, 96% 5%, 98% 98%, 0 81%);
-    background-color: black;
-    height: 40px;
-    border-radius: 5px;
-  }
-  .poll-bar-border {
-    clip-path: polygon(1% 13%, 96% 5%, 98% 98%, 0 81%);
-    background-color: white;
-    overflow: hidden;
-    position: relative;
-    padding: 7px;
-    margin-bottom: 40px;
-  }
+  z-index: 10;
 
-  .poll-bar-yes {
-    background-color: red;
-    height: 100%;
-  }
+  color: white;
+  font-size: 32px;
+  font-weight: 900;
+  letter-spacing: 2px;
 
-  .poll-options {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
+  transform: rotate(-4deg);
 
- .poll-btn-border {
+  text-shadow:
+    4px 4px 0 #000,
+    -2px -2px 0 #000;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.poll-container {
+  width: 95%;
+  max-width: 800px;
+
+  text-align: center;
+  padding: 20px;
+
   position: relative;
+}
+
+/* =========================
+   QUESTION
+========================= */
+
+.poll-question {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* =========================
+   RESULT
+========================= */
+
+.poll-result {
+  font-size: 40px;
+  font-weight: bold;
+  margin: 20px 0;
+  color: #fbc02d;
+}
+
+.poll-percentage {
+  background: linear-gradient(
+    rgb(252, 206, 4),
+    rgb(255, 128, 1)
+  );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  color: transparent;
+}
+
+/* =========================
+   POLL BAR
+========================= */
+
+.poll-bar-border {
+  clip-path: polygon(
+    1% 13%,
+    96% 5%,
+    98% 98%,
+    0 81%
+  );
+
+  background-color: white;
+
+  overflow: hidden;
+  position: relative;
+
+  padding: 7px;
+  margin-bottom: 40px;
+}
+
+.poll-bar {
+  clip-path: polygon(
+    1% 13%,
+    96% 5%,
+    98% 98%,
+    0 81%
+  );
+
+  background-color: black;
+  height: 40px;
+}
+
+.poll-bar-yes {
+  background-color: red;
+  height: 100%;
+}
+
+/* =========================
+   BUTTON CONTAINER
+========================= */
+
+.poll-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 20px;
+
+  padding: 0 10px;
+}
+
+/* =========================
+   BUTTON BORDER
+========================= */
+
+.poll-btn-border {
+  position: relative;
+
   width: 200px;
+
   padding: 5px;
   margin: 0 20px;
+
   background: white;
-  overflow: visible;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.15s ease,
+    filter 0.15s ease;
 }
+
+/* =========================
+   BUTTON
+========================= */
 
 .poll-btn {
   position: relative;
+
   width: 100%;
+  min-height: 45px;
+
   box-sizing: border-box;
 
   background-color: #900a0a;
+
   padding: 10px;
+
   color: white;
   font-weight: bold;
+
   cursor: pointer;
 
-  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* =========================
+   YES
+========================= */
 
 #poll-btn-yes {
   clip-path: polygon(
@@ -108,6 +208,9 @@
   );
 }
 
+/* =========================
+   NO
+========================= */
 
 #poll-btn-no {
   clip-path: polygon(
@@ -127,25 +230,31 @@
   );
 }
 
+/* =========================
+   HOVER
+========================= */
+
 .poll-btn-border:hover {
-  transform: translateY(-3px);
-  filter: drop-shadow(0 4px 4px rgba(255, 255, 255, 0.25));
+  filter: drop-shadow(
+    0 4px 4px rgba(255, 255, 255, 0.25)
+  );
 }
 
 .poll-btn-border:hover .poll-btn {
   background-color: #b00d0d;
 }
 
-
 #poll-btn-yes:hover {
   transform: translate(-3px, -3px);
 }
-
 
 #poll-btn-no:hover {
   transform: translate(3px, -3px);
 }
 
+/* =========================
+   ACTIVE
+========================= */
 
 .poll-btn-border:active {
   transform: scale(0.97);
@@ -155,6 +264,9 @@
   filter: brightness(0.8);
 }
 
+/* =========================
+   DISABLED
+========================= */
 
 .poll-btn-border.disabled {
   cursor: not-allowed;
@@ -168,25 +280,4 @@
 
 .poll-btn-border.disabled .poll-btn {
   cursor: not-allowed;
-}
-  /* .scroll {
-    right: 50%;
-    left: 50%;
-  }
-  .scroll-message {
-    position: absolute;
-    bottom: 130px;
-  }
-  .scroll-btn-container {
-    background-color: white;
-    padding: 5px;
-    position: absolute;
-    bottom: 70px;
-    clip-path: polygon(13% 9%, 100% 0%, 85% 88%, 0% 100%);
-  }
-  .scroll-btn {
-    background-color: black;
-    padding: 5px;
-    clip-path: polygon(13% 9%, 100% 0%, 85% 88%, 0% 100%);
-  } */
 }
