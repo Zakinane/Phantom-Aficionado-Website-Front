@@ -106,7 +106,7 @@ function TopicPage() {
           <strong>Posts:</strong> {posts.length + 1}
         </span>
         <span>
-          <strong>Participants:</strong> {topic.nbrPosters}
+          <strong>Participants:</strong> {topic.participants.length}
         </span>
       </div>
 

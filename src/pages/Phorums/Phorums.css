@@ -1,90 +1,478 @@
+/* =========================================
+   PHORUM PAGE
+========================================= */
+
 .phorums {
-  form {
-    display: flex;
-    flex-direction: column;
+  overflow: hidden;
+  width: 100%;
+  min-height: 100%;
+
+  box-sizing: border-box;
+  overflow-y: auto;
+
+  padding: 20px 18px 0;
+
+  background: #050505;
+
+  color: white;
+
+  font-family: Persona5 ,Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* =========================================
+   BANNER
+========================================= */
+
+.phorum-banner {
+  position: relative;
+
+  width: 100%;
+  height: 128px;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+
+  border: 1px solid #394047;
+
+  margin-bottom: 14px;
+}
+
+/* =========================================
+   PHORUM LOGO
+========================================= */
+
+.banner-logo {
+  position: absolute;
+
+  left: 20px;
+  top: 17px;
+
+  z-index: 3;
+
+  display: flex;
+
+  align-items: center;
+
+  transform: rotate(-5deg);
+
+  font-family: "Arial Black", "Franklin Gothic Heavy", Arial, sans-serif;
+
+  font-weight: 900;
+
+  font-style: italic;
+
+  letter-spacing: -7px;
+
+  filter: drop-shadow(5px 5px 0 #000);
+}
+
+.banner-p {
+  font-size: 72px;
+
+  color: white;
+
+  -webkit-text-stroke: 4px black;
+}
+
+.banner-h {
+  font-size: 72px;
+
+  color: #e60012;
+
+  -webkit-text-stroke: 4px black;
+}
+
+.banner-orum {
+  font-size: 65px;
+
+  color: white;
+
+  -webkit-text-stroke: 4px black;
+}
+
+/* =========================================
+   LATEST TOPICS LABEL
+========================================= */
+
+.latest-topics {
+  position: absolute;
+
+  z-index: 5;
+
+  left: 285px;
+  bottom: 7px;
+
+  padding: 7px 12px;
+
+  background: white;
+
+  color: #080808;
+
+  font-family: "Arial Black", Arial, sans-serif;
+
+  font-size: 18px;
+
+  font-weight: 900;
+
+  transform: rotate(-5deg);
+
+  box-shadow: 4px 4px 0 #111;
+}
+
+/* =========================================
+   BANNER MESSAGE
+========================================= */
+
+.banner-message {
+  position: absolute;
+
+  z-index: 4;
+
+  right: 28px;
+  top: 38px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  color: #e60012;
+
+  font-family: "Arial Black", Arial, sans-serif;
+
+  font-size: 17px;
+
+  font-style: italic;
+
+  line-height: 1.05;
+
+  transform: rotate(-8deg);
+
+  text-shadow: 2px 2px 0 #000;
+}
+
+/* =========================================
+   TOOLBAR
+========================================= */
+
+.phorum-toolbar {
+  width: 100%;
+  height: 58px;
+
+  box-sizing: border-box;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 5px 8px;
+
+  margin-bottom: 10px;
+
+  border: 1px solid #252b30;
+
+  background: linear-gradient(180deg, #101214, #070808);
+}
+
+/* =========================================
+   FILTERS
+========================================= */
+
+.topic-filters {
+  height: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 4px;
+}
+
+.topic-filter {
+  height: 42px;
+
+  min-width: 110px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 9px;
+
+  padding: 0 15px;
+
+  border: none;
+
+  background: transparent;
+
+  color: #d6d6d6;
+
+  font-size: 13px;
+
+  cursor: pointer;
+
+  transition: 0.15s ease;
+
+  clip-path: polygon(0 0, 96% 0, 100% 75%, 95% 100%, 4% 100%, 0 80%);
+}
+
+.topic-filter:hover {
+  color: white;
+
+  background: #191c1f;
+}
+
+.topic-filter.active {
+  background: linear-gradient(135deg, #ff1628, #d80010);
+
+  color: white;
+
+  font-weight: 700;
+}
+
+.filter-icon {
+  font-size: 15px;
+}
+
+/* =========================================
+   SORT
+========================================= */
+
+.sort-select {
+  width: 120px;
+  height: 35px;
+
+  padding: 0 10px;
+
+  border: 1px solid #50565b;
+
+  border-radius: 5px;
+
+  background: #0d0f10;
+
+  color: white;
+
+  outline: none;
+
+  cursor: pointer;
+
+  font-size: 12px;
+}
+
+.sort-select:focus {
+  border-color: #e60012;
+}
+
+/* =========================================
+   TOPICS
+========================================= */
+
+.topics-container {
+  justify-content: center;
+  display: flex;
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 0;
+
+  margin: 0;
+
+  overflow: visible;
+}
+
+/*
+   IMPORTANT:
+
+   Topics itself should contain the individual
+   topic cards.
+
+   We don't give this section a fixed height,
+   because MainPage's content-area is already
+   responsible for scrolling.
+*/
+
+.add-btn {
+  right: 30px;
+  bottom: 35px;
+
+  z-index: 100;
+
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: none;
+
+  border-radius: 50%;
+  color: white;
+
+  font-size: 28px;
+
+  cursor: pointer;
+
+  box-shadow: 4px 4px 0 #000;
+
+  transition: transform 0.15s ease;
+}
+
+.add-btn:hover {
+  transform: scale(1.08) rotate(5deg);
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.phorum-footer {
+  width: 100%;
+
+  min-height: 55px;
+
+  margin-top: 15px;
+
+  border-top: 1px solid #262b2f;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 12px;
+
+  color: #7d858a;
+
+  font-size: 10px;
+}
+
+.footer-dot {
+  color: #4f5559;
+}
+
+.phantom-mark {
+  margin-left: 5px;
+
+  color: white;
+
+  font-size: 18px;
+
+  transform: rotate(-15deg);
+}
+
+/* =========================================
+   FORM / MODAL OVERRIDES
+========================================= */
+
+.phorums form {
+  display: flex;
+
+  flex-direction: column;
+}
+
+.phorums input,
+.phorums textarea {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 10px;
+
+  margin-top: 5px;
+}
+
+.phorums button {
+  cursor: pointer;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1000px) {
+  .phorums {
+    padding: 15px 12px 0;
   }
 
-  label {
-    margin-top: 10px;
+  .banner-orum {
+    font-size: 55px;
   }
 
-  input,
-  textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
+  .banner-p,
+  .banner-h {
+    font-size: 60px;
   }
 
-  button {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: red;
-    color: white;
-    border: none;
-    cursor: pointer;
-    width: auto;
-  }
-  .live-comments-container {
-    z-index: 1000;
+  .latest-topics {
+    left: 240px;
 
-    position: fixed;
-    right: 30px;
-    bottom: 20px;
-    padding-bottom: 20px;
-    width: auto;
-    height: auto;
-    overflow: visible;
+    font-size: 15px;
   }
-  .live-comments-background {
-    position: relative;
-    overflow: visible;
-    width: 400px;
-    padding-bottom: 20px;
-    height: calc(100% - 20px);
-  }
+}
 
-  .live-comments-background > * {
-    position: relative;
-    z-index: 2;
-  }
-  .live-comments-background::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    scale: 1.2;
-    background: rgba(39, 39, 39, 0.75);
-    clip-path: polygon(15px 49px, 8.74% 86.65%, 95.2% 100.46%, 91.67% 4.37%);
-    z-index: 1;
-  }
-
-  /* .background-title {
-    display: flex;
-    justify-content: center;
-    position: fixed;
-    background-color: rgb(0, 0, 0);
-    width: 100vw;
-    height: 160px;
-    z-index: 100;
-  } */
-  .topics-container {
-    margin-top: 82px;
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-    height: calc(100vh - 200px);
+@media (max-width: 700px) {
+  .phorums {
+    padding: 10px 8px 0;
     overflow-y: auto;
-    scrollbar-color: #760101 #290202;
-  }
-  .add-btn {
-    position: fixed;
-    top: 100px;
-    right: 50px;
-    z-index: 500;
-    cursor: pointer;
-    transition: transform 0.2s ease;
   }
 
-  .add-btn:hover {
-    transform: scale(1.1);
+  .phorum-banner {
+    height: 105px;
+  }
+
+  .banner-logo {
+    left: 10px;
+    top: 18px;
+  }
+
+  .banner-p,
+  .banner-h {
+    font-size: 48px;
+  }
+
+  .banner-orum {
+    font-size: 43px;
+  }
+
+  .latest-topics {
+    left: 180px;
+
+    font-size: 12px;
+
+    padding: 5px 8px;
+  }
+
+  .banner-message {
+    display: none;
+  }
+
+  .topic-filter {
+    min-width: 45px;
+
+    padding: 0 9px;
+  }
+
+  .topic-filter span:last-child {
+    display: none;
+  }
+
+  .sort-select {
+    width: 90px;
   }
 }

@@ -1,6 +1,4 @@
-* {
-  overflow: hidden;
-}
+
 @media screen and (max-width: 768px) {
   .landing-body {
     background-color: black;
@@ -48,6 +46,8 @@
 
 @media screen and (min-width: 768px) {
   .landing-body {
+        overflow: hidden;
+
     margin: 0px;
     background-color: black;
     background-image: url("../../assets/images/Red and Black circles.png");

@@ -1,35 +1,488 @@
-.search-bar {
-  clip-path: polygon(0 0, 96% 22%, 94% 77%, 1% 92%);
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  background: rgb(83, 81, 81);
-  width: 100%;
-  height: 40px;
-  margin: 15px;
+/* =========================================
+   PHORUM HEADER
+========================================= */
+
+.phorum-header {
   position: relative;
-  z-index: 2;
-  padding: 30px;
+
+  width: 100%;
+  height: 95px;
+
   box-sizing: border-box;
+
   display: flex;
   align-items: center;
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 9px;
-    background: rgb(0, 0, 0);
-    clip-path: polygon(0 0, 96% 22%, 94% 77%, 1% 92%);
-    z-index: -1;
+
+  padding: 0 30px;
+
+  background: #050505;
+
+  color: white;
+
+  overflow: hidden;
+
+  border-bottom: 1px solid #292929;
+
+  z-index: 50;
+}
+
+
+/* =========================================
+   RED DECORATION
+========================================= */
+
+.header-red-shape {
+  position: absolute;
+
+  background: #e60012;
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+
+/* Main red slash */
+
+.header-shape-one {
+  width: 320px;
+  height: 85px;
+
+  left: -80px;
+  top: -30px;
+
+  transform: rotate(-8deg);
+}
+
+
+/* Small slash */
+
+.header-shape-two {
+  width: 230px;
+  height: 28px;
+
+  right: -60px;
+  bottom: 5px;
+
+  transform: rotate(-7deg);
+
+  opacity: 0.8;
+}
+
+
+/* =========================================
+   BRAND
+========================================= */
+
+.header-brand {
+  position: relative;
+
+  z-index: 2;
+
+  width: auto;
+  margin-right: 5px;
+
+  flex-shrink: 0;
+
+  transform: rotate(-3deg);
+}
+
+
+.header-brand-title {
+  font-family:
+    "Arial Black",
+    "Franklin Gothic Heavy",
+    Arial,
+    sans-serif;
+
+  font-size: 35px;
+
+  font-weight: 1000;
+
+  letter-spacing: -4px;
+
+  line-height: 0.85;
+
+  text-shadow:
+    3px 3px 0 #000;
+}
+
+
+.header-brand-title span {
+  color: #ff0015;
+}
+
+
+.header-brand-subtitle {
+  margin-top: 8px;
+
+  font-size: 9px;
+
+  font-weight: 900;
+
+  letter-spacing: 3px;
+
+  color: white;
+}
+
+
+/* =========================================
+   SEARCH CONTAINER
+========================================= */
+
+.search-container {
+  position: relative;
+
+  z-index: 2;
+
+  flex: 1;
+
+  max-width: 650px;
+
+  height: 48px;
+
+  margin: 0 auto;
+
+  display: flex;
+
+  align-items: center;
+
+  box-sizing: border-box;
+
+  padding: 0 18px;
+
+  background: #151515;
+
+  border: 2px solid #444;
+
+  transform: skewX(-5deg);
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+
+/* Red left edge */
+
+.search-container::before {
+  content: "";
+
+  position: absolute;
+
+  left: -2px;
+  top: -2px;
+
+  width: 6px;
+  height: calc(100% + 4px);
+
+  background: #e60012;
+}
+
+
+/* Focus */
+
+.search-container:focus-within {
+  border-color: #e60012;
+
+  background: #101010;
+}
+
+
+/* =========================================
+   SEARCH ICON
+========================================= */
+
+.search-icon {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  margin-right: 12px;
+
+  font-size: 17px;
+
+  transform: skewX(5deg);
+}
+
+
+/* =========================================
+   INPUT
+========================================= */
+
+.search-container input {
+  flex: 1;
+
+  width: 100%;
+
+  border: none;
+
+  outline: none;
+
+  background: transparent;
+
+  color: white;
+
+  font-family:
+    "Franklin Gothic Medium",
+    "Arial Narrow",
+    Arial,
+    sans-serif;
+
+  font-size: 15px;
+
+  transform: skewX(5deg);
+}
+
+
+.search-container input::placeholder {
+  color: #777;
+
+  font-style: italic;
+}
+
+
+/* =========================================
+   CLEAR BUTTON
+========================================= */
+
+.clear-search {
+  border: none;
+
+  background: transparent;
+
+  color: #777;
+
+  font-size: 24px;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  padding: 0;
+
+  transform: skewX(5deg);
+
+  transition:
+    color 0.15s ease;
+}
+
+
+.clear-search:hover {
+  color: #ff0015;
+}
+
+
+/* =========================================
+   USER
+========================================= */
+
+.header-user {
+  position: relative;
+
+  z-index: 2;
+
+  width: 180px;
+
+  margin-left: 25px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+
+.header-user-avatar {
+  width: 42px;
+  height: 42px;
+
+  min-width: 42px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: #ddd;
+
+  border-radius: 50%;
+
+  color: #111;
+
+  font-size: 20px;
+
+  border: 2px solid white;
+}
+
+
+.header-user-info {
+  display: flex;
+
+  flex-direction: column;
+
+  line-height: 1;
+}
+
+
+.header-user-info span {
+  color: #777;
+
+  font-size: 8px;
+
+  font-weight: 900;
+
+  letter-spacing: 1px;
+}
+
+
+.header-user-info strong {
+  margin-top: 5px;
+
+  color: white;
+
+  font-size: 13px;
+
+  letter-spacing: 1px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+  .phorum-header {
+    height: 70px;
+
+    padding: 0 15px;
+  }
+
+
+  /* Hide desktop branding */
+
+  .header-brand {
+    width: auto;
+  }
+
+
+  .header-brand-title {
+    font-size: 24px;
+
+    letter-spacing: -3px;
+  }
+
+
+  .header-brand-subtitle {
+    display: none;
+  }
+
+
+  /* Search */
+
+  .search-container {
+    height: 42px;
+
+    margin: 0;
+
+    padding:
+      0
+      12px;
+
+    max-width: none;
+  }
+
+
+  .search-container input {
+    font-size: 13px;
+  }
+
+
+  .search-container input::placeholder {
+    font-size: 12px;
+  }
+
+
+  .search-icon {
+    font-size: 14px;
+
+    margin-right: 7px;
+  }
+
+
+  /* User */
+
+  .header-user {
+    width: auto;
+
+    margin-left: 10px;
+  }
+
+
+  .header-user-avatar {
+    width: 35px;
+    height: 35px;
+
+    min-width: 35px;
+
+    font-size: 16px;
+  }
+
+
+  .header-user-info {
+    display: none;
+  }
+
+
+  /* Decorations */
+
+  .header-shape-one {
+    width: 220px;
+  }
+
+
+  .header-shape-two {
+    display: none;
   }
 }
-.search-bar input {
-  border: none;
-  background: transparent;
-  color: white;
-  font-size: 18px;
-  width: 100%;
-  outline: none;
-}
-.search-bar .search-icon {
-  margin-right: 25px;
-  width: 20px;
-  color: white;
+
+
+/* =========================================
+   VERY SMALL PHONES
+========================================= */
+
+@media (max-width: 480px) {
+
+  .phorum-header {
+    padding: 0 10px;
+  }
+
+
+  .header-brand-title {
+    font-size: 20px;
+  }
+
+
+
+  .header-user {
+    margin-left: 7px;
+  }
+
+
+  .header-user-avatar {
+    width: 31px;
+    height: 31px;
+
+    min-width: 31px;
+  }
+
+
+  .search-container {
+    height: 38px;
+  }
 }

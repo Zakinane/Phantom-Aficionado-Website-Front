@@ -1,38 +1,66 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Title from "../title/Title";
-import { useUser } from "../../context/UserContext";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./Sidebar.css";
 
 function Sidebar({ collapsed, setCollapsed }) {
-  const { user } = useUser();
-  const [tooltip, setTooltip] = useState(null);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const [tooltip, setTooltip] = useState(null);
 
   const menuItems = [
-    { href: "/phorum", icon: "💬", label: "PHORUM" },
-    { href: "/poll", icon: "📊", label: "POLL" },
-    { href: "/im", icon: "✉️", label: "IM" },
-    { href: "/notifications", icon: "🔔", label: "Notifications" },
-    { href: "/support", icon: "❤", label: "Support" },
+    {
+      href: "/phorum",
+      icon: "💬",
+      label: "PHORUM",
+      description: "Talk about the latest news !!",
+    },
+    {
+      href: "/poll",
+      icon: "📊",
+      label: "POLL",
+      description: "Vote on the latest poll !!",
+    },
+    {
+      href: "/im",
+      icon: "✉️",
+      label: "IM",
+      description: "Chat with your teammates !",
+    },
+    {
+      href: "/notifications",
+      icon: "🔔",
+      label: "Notifications",
+      // badge: 3,
+      description: "Check your notifications !",
+    },
+    {
+      href: "/support",
+      icon: "❤",
+      label: "Support",
+      description: "Get help and support !",
+    },
   ];
 
-  const handleMouseEnter = (e, text) => {
+  const handleMouseEnter = (e, item) => {
+    if (!collapsed) return;
+
     setTooltip({
-      text,
+      text: item.label,
+      description: item.description,
       x: e.clientX + 15,
       y: e.clientY + 15,
     });
   };
 
   const handleMouseMove = (e) => {
-    if (tooltip) {
-      setTooltip((prev) => ({
-        ...prev,
-        x: e.clientX + 15,
-        y: e.clientY + 15,
-      }));
-    }
+    if (!tooltip) return;
+
+    setTooltip((prev) => ({
+      ...prev,
+      x: e.clientX + 15,
+      y: e.clientY + 15,
+    }));
   };
 
   const handleMouseLeave = () => {
@@ -44,63 +72,118 @@ function Sidebar({ collapsed, setCollapsed }) {
     navigate("/");
   };
 
+  const isActive = (href) => {
+    return location.pathname === href;
+  };
+
   return (
     <>
       <aside className={`sidebar ${collapsed ? "collapsed" : ""}`}>
-        <div>
-          <div className="profile-icon">
-            <img src={user?.avatar} alt="pfp" />
+        <div className="halftone"></div>
+
+        {/* =========================
+            PHORUM BRAND  
+        ========================= */}
+
+        <div className="sidebar-brand" onClick={() => navigate("/phorum")}>
+          <div className="brand-title">
+            P<span>H</span>ORUM
           </div>
-          {user && !collapsed && (
-            <p>
-              Hello <b>{user.username}</b> !
-            </p>
+
+          {!collapsed && (
+            <div className="brand-subtitle">Discuss everything about the thieves!</div>
           )}
         </div>
 
+
+        {/* =========================
+            NAVIGATION
+        ========================= */}
+
         <nav className="menu">
-          {menuItems.map((item) => (
-            <button
-              style={{ width: "100%" }}
-              key={item.label}
-              onClick={() => navigate(item.href)}
-              onMouseEnter={(e) => handleMouseEnter(e, item.label)}
-              onMouseMove={handleMouseMove}
-              onMouseLeave={handleMouseLeave}
-            >
-              <span className="icon">{item.icon}</span>
-              {!collapsed && <span>{item.label}</span>}
-            </button>
-          ))}
+          {menuItems.map((item) => {
+            const active = isActive(item.href);
+
+            return (
+              <button
+                key={item.label}
+                className={`menu-item ${active ? "active" : ""}`}
+                onClick={() => navigate(item.href)}
+                onMouseEnter={(e) => handleMouseEnter(e, item)}
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+              >
+                {/* ICON */}
+
+                <span className="menu-icon">{item.icon}</span>
+
+                {/* LABEL */}
+
+                {!collapsed && <span className="menu-label">{item.label}</span>}
+
+                {/* NOTIFICATION */}
+
+                {!collapsed && item.badge && (
+                  <span className="notification-badge">{item.badge}</span>
+                )}
+
+                {/* COLLAPSED BADGE */}
+
+                {collapsed && item.badge && (
+                  <span className="collapsed-badge">{item.badge}</span>
+                )}
+              </button>
+            );
+          })}
         </nav>
 
-        <button className="toggle" onClick={() => setCollapsed(!collapsed)}>
-          {collapsed ? "➡️" : "⬅️"}
+        {/* =========================
+            COLLAPSE
+        ========================= */}
+
+        <button
+          className="collapse-button"
+          onClick={() => setCollapsed(!collapsed)}
+        >
+          {collapsed ? (
+            <span className="collapse-arrow">→</span>
+          ) : (
+            <>
+              <span className="collapse-arrow">←</span>
+
+              <span>Collapse sidebar</span>
+            </>
+          )}
         </button>
+
+        {/* =========================
+            LOGOUT
+        ========================= */}
 
         {!collapsed && (
           <button className="disconnect-btn" onClick={handleDisconnect}>
-            Disconnect
+            <span className="logout-icon">↪</span>
+
+            <span>Log out</span>
           </button>
         )}
       </aside>
 
+      {/* =========================
+          TOOLTIP
+      ========================= */}
+
       {tooltip && (
         <div
-          className={`tooltip visible`}
+          className="tooltip"
           style={{
             top: tooltip.y - 20,
             left: tooltip.x + 20,
           }}
         >
-          <Title title={tooltip.text} redIndex={1} />
-          <p className="tooltip-desc">
-            {{
-              PHORUM: "Talk about the latest new !!",
-              POLL: "Vote on latest poll !!",
-              IM: "Chat with your teamates !",
-            }[tooltip.text] || `Click to go to ${tooltip.text}`}
-          </p>
+          <div className="tooltip-title">{tooltip.text}</div>
+
+          <p className="tooltip-desc">{tooltip.description}</p>
         </div>
       )}
     </>

@@ -1,8 +1,8 @@
 .topics {
+  overflow: hidden;
   width: 100%;
-  height: calc(100vh - 200px);
   position: relative;
-  overflow: visible;
+  overflow: auto;
   display: flex;
   flex-direction: column;
   padding: 15px;

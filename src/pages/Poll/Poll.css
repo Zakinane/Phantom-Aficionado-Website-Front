@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   color: white;
-  height: 100vh;
+  height: 100%;
 
   #POLL {
     position: fixed;
@@ -66,27 +66,109 @@
     margin-top: 20px;
   }
 
-  .poll-btn {
-    user-select: none;
-    background-color: #900a0a;
-    padding: 10px;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  .poll-btn-border {
-    position: relative;
-    width: 200px;
-    background-color: white;
-    padding: 5px;
-    margin: 0px 20px;
-  }
-  #poll-btn-yes {
-    clip-path: polygon(0 0, 96% 18%, 95% 77%, 8% 100%);
-  }
-  #poll-btn-no {
-    clip-path: polygon(0 16%, 100% 0, 96% 98%, 0 81%);
-  }
+ .poll-btn-border {
+  position: relative;
+  width: 200px;
+  padding: 5px;
+  margin: 0 20px;
+  background: white;
+  overflow: visible;
+}
+
+.poll-btn {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+
+  background-color: #900a0a;
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+
+  overflow: visible;
+}
+
+
+#poll-btn-yes {
+  clip-path: polygon(
+    0 0,
+    96% 18%,
+    95% 77%,
+    8% 100%
+  );
+}
+
+#poll-btn-yes-inner {
+  clip-path: polygon(
+    0 0,
+    96% 18%,
+    95% 77%,
+    8% 100%
+  );
+}
+
+
+#poll-btn-no {
+  clip-path: polygon(
+    0 16%,
+    100% 0,
+    96% 98%,
+    0 81%
+  );
+}
+
+#poll-btn-no-inner {
+  clip-path: polygon(
+    0 16%,
+    100% 0,
+    96% 98%,
+    0 81%
+  );
+}
+
+.poll-btn-border:hover {
+  transform: translateY(-3px);
+  filter: drop-shadow(0 4px 4px rgba(255, 255, 255, 0.25));
+}
+
+.poll-btn-border:hover .poll-btn {
+  background-color: #b00d0d;
+}
+
+
+#poll-btn-yes:hover {
+  transform: translate(-3px, -3px);
+}
+
+
+#poll-btn-no:hover {
+  transform: translate(3px, -3px);
+}
+
+
+.poll-btn-border:active {
+  transform: scale(0.97);
+}
+
+.poll-btn-border:active .poll-btn {
+  filter: brightness(0.8);
+}
+
+
+.poll-btn-border.disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.poll-btn-border.disabled:hover {
+  transform: none;
+  filter: none;
+}
+
+.poll-btn-border.disabled .poll-btn {
+  cursor: not-allowed;
+}
   /* .scroll {
     right: 50%;
     left: 50%;

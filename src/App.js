@@ -5,6 +5,8 @@ import TEST from "./pages/TEST";
 import Poll from "./pages/Poll/Poll";
 import Phorums from "./pages/Phorums/Phorums";
 import NotFound from "./pages/404/NotFound";
+import InProgress from "./pages/Progress/InProgress";
+import Rules from "./pages/Rouxls/Rules";
 // import IM from "./pages/IM/IM";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from "./pages/Main/MainPage";
@@ -26,6 +28,12 @@ function App() {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/authentication" element={<Auth />} />
+          <Route path="/rules" element={<Rules />} />
+
+          <Route path="/notifications" element={<InProgress />} />
+          <Route path="/im" element={<InProgress />} />
+          <Route path="/support" element={<InProgress />} />
+
           <Route path="/tEST" element={<TEST />} />
           <Route path="*" element={<NotFound />} />
 

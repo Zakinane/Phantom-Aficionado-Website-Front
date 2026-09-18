@@ -1,89 +1,408 @@
+/* =========================================
+   TOPIC CARD
+========================================= */
+
 .topic {
-  overflow: visible;
-  display: grid;
-  grid-template-columns: 60px auto 35px;
-  color: #fff;
-  text-decoration: none;
-  margin-bottom: 0px;
-  padding: 10px 5px;
   position: relative;
-  cursor: pointer;
-  user-select: none;
+
+  width: 100%;
+  min-height: 82px;
+
+  box-sizing: border-box;
+
+  display: grid;
+
+  grid-template-columns: 72px minmax(0, 1fr) 100px;
+
+  align-items: center;
+
+  gap: 15px;
+
+  padding: 10px 13px;
+
+  margin-bottom: 7px;
+
+  background: linear-gradient(110deg, #101214, #080a0b);
+
+  border: 1px solid #282e33;
+
+  border-radius: 5px;
+
+  color: white;
+
+  text-decoration: none;
+
+  overflow: hidden;
+
+  transition:
+    border-color 0.15s ease,
+    transform 0.15s ease,
+    background 0.15s ease;
 }
-.badge {
-  position: absolute;
-  top: 0px;
-  left: -10px;
-  background: rgb(0, 0, 0);
-  color: red;
-  font-size: 13px;
-  padding: 7px 9px;
-  rotate: -10deg;
-  clip-path: polygon(0 0, 100% 0, 86% 92%, 18% 93%);
-  z-index: 10;
+
+/* =========================================
+   HOVER
+========================================= */
+
+.topic:hover {
+  border-color: #555c62;
+
+  background: linear-gradient(110deg, #15181a, #090a0b);
+
+  transform: translateX(2px);
 }
-.badge::before {
+
+/* =========================================
+   NEW TOPIC
+========================================= */
+
+.topic-new {
+  border: 2px solid #ed0718;
+}
+
+.topic-new::before {
   content: "";
+
   position: absolute;
-  inset: 5px;
-  background: rgb(255, 255, 255);
-  clip-path: polygon(0 0, 100% 0, 86% 92%, 18% 93%);
-  z-index: -1;
+
+  left: 0;
+  top: 0;
+  bottom: 0;
+
+  width: 3px;
+
+  background: #ed0718;
 }
 
-.NEW {
+/* =========================================
+   AVATAR
+========================================= */
+
+.topic-avatar-container {
+  width: 60px;
+  height: 60px;
+
+  padding: 3px;
+
+  box-sizing: border-box;
+
+  background: #e60012;
+
+  clip-path: polygon(
+    8% 0,
+    92% 0,
+    100% 8%,
+    100% 92%,
+    92% 100%,
+    8% 100%,
+    0 92%,
+    0 8%
+  );
 }
 
-.OLD {
-  color: gray !important;
+.topic-avatar {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  background: #111;
+
+  clip-path: polygon(
+    8% 0,
+    92% 0,
+    100% 8%,
+    100% 92%,
+    92% 100%,
+    8% 100%,
+    0 92%,
+    0 8%
+  );
+}
+
+/* =========================================
+   MAIN
+========================================= */
+
+.topic-main {
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+}
+
+/* =========================================
+   TITLE
+========================================= */
+
+.topic-title-row {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  min-width: 0;
+
+  margin-bottom: 5px;
 }
 
 .title-topic {
-  z-index: 9;
-  word-break: keep-all;
+  margin: 0;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+  color: #f2f2f2;
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+  line-height: 1.2;
+}
+
+/* =========================================
+   NEW BADGE
+========================================= */
+
+.badge {
+  flex-shrink: 0;
+
+  padding: 2px 6px;
+
+  border-radius: 5px;
+
+  background: #ed0718;
+
+  color: white;
+
+  font-size: 8px;
+
+  font-weight: 900;
+
+  line-height: 1.2;
+}
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.topic-description {
+  min-width: 0;
+
   display: flex;
-  justify-content: center;
+
   align-items: center;
-  clip-path: polygon(0 0, 92% 17%, 99% 86%, 12% 100%);
-  font-family: "Earwig factory";
-  color: black;
-  background-color: white;
-  padding: 10px 20px;
-  font-size: 20px;
-  rotate: -7deg;
 
-  width: max-content;
-  max-width: 100%;
-  overflow-wrap: break-word;
-  word-break: break-word;
-}
-.content {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 5px 50px;
-  background-color: #fa1111a1;
-  clip-path: polygon(0 16%, 100% 0, 91% 100%, 6% 86%);
-  z-index: 8;
+  gap: 8px;
+
+  color: #aeb5b9;
+
+  font-size: 11px;
 }
 
-.content-bg {
-  position: absolute;
-  top: 16px;
-  left: 58px;
-  width: 90%;
-  height: 60%;
-  clip-path: polygon(0 21%, 89% 0, 95% 97%, 6% 88%);
-  background-color: #fa1111a1;
-  rotate: 2deg;
-  z-index: -1;
-}
+.topic-tag {
+  flex-shrink: 0;
 
-.nbr-posts {
-  color: rgb(195, 194, 194);
+  padding: 3px 8px;
+
+  border-radius: 10px;
+
+  background: #3a4045;
+
+  color: #e4e6e7;
+
   font-size: 10px;
-  direction: rtl;
+}
+
+.content {
+  min-width: 0;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+}
+
+.content p {
+  display: inline;
+
+  margin: 0;
+}
+
+.content h1,
+.content h2,
+.content h3,
+.content ul,
+.content ol,
+.content blockquote {
+  display: inline;
+
+  margin: 0;
+}
+
+/* =========================================
+   AUTHOR
+========================================= */
+
+.topic-author {
   display: flex;
+
   align-items: center;
+
+  gap: 6px;
+
+  margin-top: 6px;
+
+  color: #70838d;
+
+  font-size: 10px;
+}
+
+.author-name {
+  color: #83a9bc;
+}
+
+.author-separator {
+  color: #4d5960;
+}
+
+/* =========================================
+   STATS
+========================================= */
+
+.topic-stats {
+  height: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-end;
+
+  gap: 20px;
+
+  color: #c1c7ca;
+
+  font-size: 11px;
+}
+
+.topic-stat {
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  min-width: 35px;
+}
+
+.stat-icon {
+  color: #aab4b9;
+
+  font-size: 16px;
+}
+
+/* =========================================
+   NEW TOPIC ACCENT
+========================================= */
+
+.topic-new .topic-avatar-container {
+  background: #ff1024;
+}
+
+.topic-new .title-topic {
+  color: white;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 800px) {
+  .topic {
+    grid-template-columns:
+      58px
+      minmax(0, 1fr)
+      70px;
+
+    gap: 10px;
+
+    padding: 9px;
+  }
+
+  .topic-avatar-container {
+    width: 50px;
+    height: 50px;
+  }
+
+  .title-topic {
+    font-size: 13px;
+  }
+
+  .topic-description {
+    font-size: 10px;
+  }
+
+  .topic-stats {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 550px) {
+  .topic {
+    grid-template-columns:
+      48px
+      minmax(0, 1fr)
+      40px;
+  }
+
+  .topic-avatar-container {
+    width: 42px;
+    height: 42px;
+  }
+
+  .topic-description {
+    display: block;
+  }
+
+  .topic-tag {
+    display: inline-block;
+
+    margin-right: 5px;
+  }
+
+  .content {
+    display: inline;
+  }
+
+  .topic-stats {
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: 3px;
+  }
+
+  .topic-stat {
+    gap: 3px;
+  }
+
+  .topic-stat:last-child {
+    display: none;
+  }
+
+  .stat-icon {
+    font-size: 13px;
+  }
 }

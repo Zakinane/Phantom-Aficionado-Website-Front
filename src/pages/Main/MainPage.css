@@ -1,18 +1,123 @@
+/* =========================================
+   MAIN PAGE
+========================================= */
+
 .main-page {
+  width: 100%;
+  height: 100vh;
+
   display: flex;
-  min-height: 100vh;
+
+  background: #050505;
+
+  overflow: hidden;
 }
 
-.sidebar {
-  flex-shrink: 0; 
+/* =========================================
+   AREA TO THE RIGHT OF LEFT SIDEBAR
+========================================= */
+
+.main-area {
+  flex: 1;
+
+  min-width: 0;
+
+  height: 100vh;
+
+  display: flex;
+
+  flex-direction: column;
+
+  overflow: hidden;
 }
+
+/* =========================================
+   HEADER
+========================================= */
+
+.main-area > .phorum-header {
+  flex-shrink: 0;
+
+  width: 100%;
+}
+
+/* =========================================
+   CONTENT + RIGHT SIDEBAR
+========================================= */
+
+.page-layout {
+  flex: 1;
+
+  min-height: 0;
+
+  min-width: 0;
+
+  display: flex;
+
+  overflow: hidden;
+}
+
+/* =========================================
+   MAIN CONTENT
+========================================= */
 
 .content-area {
+  scrollbar-width :thin;
   flex: 1;
+
+  min-width: 0;
+
+  height: 100%;
+
+  overflow-x: hidden;
+
+  box-sizing: border-box;
+
+  background: #080808;
 }
-.loadin-message{
-  color: yellow;
+
+/* =========================================
+   CONTENT SCROLLBAR
+========================================= */
+
+.content-area::-webkit-scrollbar {
+  width: 6px;
 }
-.error-message{
-  color: red;
+
+.content-area::-webkit-scrollbar-track {
+  background: #080808;
+}
+
+.content-area::-webkit-scrollbar-thumb {
+  background: #292929;
+}
+
+.content-area::-webkit-scrollbar-thumb:hover {
+  background: #e60012;
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+  .main-page {
+    height: 100vh;
+
+    overflow: hidden;
+  }
+
+  .main-area {
+    width: 100%;
+
+    height: 100%;
+  }
+
+  .page-layout {
+    width: 100%;
+  }
+
+  .content-area {
+    width: 100%;
+  }
 }

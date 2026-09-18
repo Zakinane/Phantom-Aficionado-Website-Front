@@ -1,38 +1,501 @@
+/* =========================================
+   POST CARD
+========================================= */
 
 .post {
-  background: #222;
-  border-radius: 8px;
-  padding: 12px;
-  margin-bottom: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  position: relative;
+
+  width: 100%;
+
+  box-sizing: border-box;
+
+  display: grid;
+
+  grid-template-columns: 72px 1fr;
+
+  column-gap: 16px;
+
+  padding: 13px 15px;
+
+  margin-bottom: 8px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #101214,
+      #080909
+    );
+
+  border: 1px solid #292e33;
+
+  border-radius: 5px;
+
+  color: white;
+
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
 }
 
-.post-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 8px;
+
+/* =========================================
+   HOVER
+========================================= */
+
+.post:hover {
+  border-color: #4a5055;
+
+  background:
+    linear-gradient(
+      135deg,
+      #131619,
+      #090a0b
+    );
 }
+
+
+/* =========================================
+   USER COLUMN
+========================================= */
+
+.post-user {
+  width: 72px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: flex-start;
+
+  text-align: center;
+}
+
+
+/* =========================================
+   AVATAR
+========================================= */
+
+.post-avatar-container {
+  width: 58px;
+  height: 58px;
+
+  box-sizing: border-box;
+
+  padding: 3px;
+
+  background: #e60012;
+
+  /*
+     Slightly angular Persona-style frame
+  */
+  clip-path:
+    polygon(
+      7% 0,
+      93% 0,
+      100% 10%,
+      100% 90%,
+      93% 100%,
+      7% 100%,
+      0 90%,
+      0 10%
+    );
+}
+
 
 .post-avatar {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
   object-fit: cover;
+
+  background: #111;
+
+  clip-path:
+    polygon(
+      7% 0,
+      93% 0,
+      100% 10%,
+      100% 90%,
+      93% 100%,
+      7% 100%,
+      0 90%,
+      0 10%
+    );
 }
+
+
+.post-avatar-placeholder {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: #17191b;
+
+  color: white;
+
+  font-size: 24px;
+
+  font-weight: 900;
+}
+
+
+/* =========================================
+   USER INFORMATION
+========================================= */
+
+.post-user-info {
+  width: 100%;
+
+  margin-top: 6px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+}
+
+
+.post-username {
+  max-width: 72px;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+  color: white;
+
+  font-size: 11px;
+
+  font-weight: 700;
+}
+
 
 .post-date {
-  color: #888;
-  font-size: 0.8rem;
-  margin-left: 5px;
+  max-width: 72px;
+
+  margin-top: 2px;
+
+  color: #6e7d85;
+
+  font-size: 9px;
+
+  line-height: 1.2;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
 }
+
+
+/* =========================================
+   CONTENT
+========================================= */
 
 .post-content {
-  hyphens: auto;
-  text-wrap: wrap;
+  min-width: 0;
+
+  padding:
+    2px 4px 2px 0;
+
+  color: #d4d7d9;
+
+  font-size: 13px;
+
+  line-height: 1.55;
+
   word-wrap: break-word;
-  color: #ddd;
-  font-size: 1rem;
-  line-height: 1.4;
+
+  overflow-wrap: anywhere;
 }
 
+
+/* =========================================
+   MARKDOWN
+========================================= */
+
+.post-content p {
+  margin:
+    0 0 10px;
+}
+
+
+.post-content p:last-child {
+  margin-bottom: 0;
+}
+
+
+.post-content h1,
+.post-content h2,
+.post-content h3 {
+  margin-top: 5px;
+
+  margin-bottom: 10px;
+
+  color: white;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-weight: 800;
+}
+
+
+.post-content h1 {
+  font-size: 22px;
+}
+
+
+.post-content h2 {
+  font-size: 18px;
+}
+
+
+.post-content h3 {
+  font-size: 15px;
+}
+
+
+/* =========================================
+   LINKS
+========================================= */
+
+.post-content a {
+  color: #ff1b2d;
+
+  text-decoration: none;
+
+  font-weight: 600;
+}
+
+
+.post-content a:hover {
+  text-decoration: underline;
+}
+
+
+/* =========================================
+   CODE
+========================================= */
+
+.post-content code {
+  padding:
+    2px 5px;
+
+  border-radius: 3px;
+
+  background: #1b1e21;
+
+  color: #ff5360;
+
+  font-family:
+    Consolas,
+    monospace;
+
+  font-size: 12px;
+}
+
+
+.post-content pre {
+  margin: 10px 0;
+
+  padding: 12px;
+
+  overflow-x: auto;
+
+  background: #050606;
+
+  border:
+    1px solid
+    #292e33;
+
+  border-left:
+    3px solid
+    #e60012;
+
+  border-radius: 3px;
+}
+
+
+.post-content pre code {
+  padding: 0;
+
+  background: transparent;
+
+  color: #ddd;
+}
+
+
+/* =========================================
+   QUOTES
+========================================= */
+
+.post-content blockquote {
+  margin:
+    10px 0;
+
+  padding:
+    8px 12px;
+
+  border-left:
+    3px solid
+    #e60012;
+
+  background:
+    rgba(255, 255, 255, 0.03);
+
+  color: #aaa;
+}
+
+
+/* =========================================
+   LISTS
+========================================= */
+
+.post-content ul,
+.post-content ol {
+  margin:
+    8px 0;
+
+  padding-left: 22px;
+}
+
+
+.post-content li {
+  margin-bottom: 4px;
+}
+
+
+/* =========================================
+   IMAGES
+========================================= */
+
+.post-content img {
+  max-width: 100%;
+
+  height: auto;
+
+  margin-top: 8px;
+
+  border:
+    1px solid
+    #30353a;
+}
+
+
+/* =========================================
+   HORIZONTAL RULE
+========================================= */
+
+.post-content hr {
+  margin:
+    14px 0;
+
+  border: none;
+
+  border-top:
+    1px solid
+    #292e33;
+}
+
+
+/* =========================================
+   TABLES
+========================================= */
+
+.post-content table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  margin: 10px 0;
+
+  font-size: 12px;
+}
+
+
+.post-content th,
+.post-content td {
+  padding: 7px 9px;
+
+  border:
+    1px solid
+    #30353a;
+
+  text-align: left;
+}
+
+
+.post-content th {
+  background: #17191b;
+
+  color: white;
+}
+
+
+.post-content td {
+  background: #0d0f10;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .post {
+    grid-template-columns: 55px 1fr;
+
+    column-gap: 10px;
+
+    padding: 10px;
+  }
+
+
+  .post-user {
+    width: 55px;
+  }
+
+
+  .post-avatar-container {
+    width: 45px;
+    height: 45px;
+  }
+
+
+  .post-username,
+  .post-date {
+    max-width: 55px;
+  }
+
+
+  .post-username {
+    font-size: 9px;
+  }
+
+
+  .post-date {
+    font-size: 8px;
+  }
+
+
+  .post-content {
+    font-size: 12px;
+  }
+
+}
