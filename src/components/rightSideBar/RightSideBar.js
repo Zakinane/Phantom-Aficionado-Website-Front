@@ -295,10 +295,6 @@ function RightSidebar() {
 
         </div>
 
-        <div className="banner-image-space">
-          IMAGE
-        </div>
-
       </div>
 
 

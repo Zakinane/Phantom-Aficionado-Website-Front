@@ -218,9 +218,9 @@ const NewTopic = ({ onClose, onCreated }) => {
           ))}
         </div>
 
-        <button className="poll-btn" onClick={() => setShowPoll(!showPoll)}>
+        {/* <button className="poll-btn" onClick={() => setShowPoll(!showPoll)}>
           {showPoll ? "REMOVE MINI-POLL" : "ADD A MINI-POLL"}
-        </button>
+        </button> */}
 
         {showPoll && (
           <div className="poll-editor">
@@ -264,7 +264,7 @@ const NewTopic = ({ onClose, onCreated }) => {
             <button type="button" onClick={() => applyMarkdown("Italic")}>
               I
             </button>
-            <button>U</button>
+            {/* <button>U</button> */}
             <button type="button" onClick={() => applyMarkdown("Crossed")}>
               S
             </button>
@@ -278,14 +278,14 @@ const NewTopic = ({ onClose, onCreated }) => {
             <button type="button" onClick={() => applyMarkdown("Blockquote")}>
               “ ”
             </button>
-            <button type="button" onClick={() => applyMarkdown("Spoiler")}>
+            {/* <button type="button" onClick={() => applyMarkdown("Spoiler")}>
               SPOILER
             </button>
-            <button>😊</button>
+            <button>😊</button> */}
             <button type="button" onClick={() => applyMarkdown("Link")}>
               🔗
             </button>
-            <button>🖼️</button>
+            {/* <button>🖼️</button> */}
             <button
               className="preview"
               type="button"
