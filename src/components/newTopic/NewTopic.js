@@ -218,9 +218,9 @@ const NewTopic = ({ onClose, onCreated }) => {
           ))}
         </div>
 
-        {/* <button className="poll-btn" onClick={() => setShowPoll(!showPoll)}>
+        <button className="poll-btn" onClick={() => setShowPoll(!showPoll)}>
           {showPoll ? "REMOVE MINI-POLL" : "ADD A MINI-POLL"}
-        </button> */}
+        </button>
 
         {showPoll && (
           <div className="poll-editor">
