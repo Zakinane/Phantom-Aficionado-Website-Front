@@ -9,18 +9,12 @@ function SearchBar({ value, onChange }) {
   return (
     <header className="phorum-header">
 
-      {/* =================================
-          DECORATIVE SHAPES
-      ================================= */}
 
       <div className="header-red-shape header-shape-one"></div>
 
       <div className="header-red-shape header-shape-two"></div>
 
 
-      {/* =================================
-          BRAND
-      ================================= */}
 
       <div className="header-brand">
 
@@ -35,9 +29,6 @@ function SearchBar({ value, onChange }) {
       </div>
 
 
-      {/* =================================
-          SEARCH
-      ================================= */}
 
       <div className="search-container">
 
@@ -65,9 +56,6 @@ function SearchBar({ value, onChange }) {
       </div>
 
 
-      {/* =================================
-          USER PROFILE
-      ================================= */}
 
       <div className="sidebar-profile">
 

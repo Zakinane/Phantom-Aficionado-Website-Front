@@ -16,9 +16,6 @@
   overflow: hidden;
 }
 
-/* =========================
-   HEADER
-========================= */
 
 .poll-header {
   position: absolute;
@@ -40,9 +37,6 @@
     -2px -2px 0 #000;
 }
 
-/* =========================
-   CONTAINER
-========================= */
 
 .poll-container {
   width: 95%;
@@ -54,9 +48,6 @@
   position: relative;
 }
 
-/* =========================
-   QUESTION
-========================= */
 
 .poll-question {
   margin-top: 20px;
@@ -64,9 +55,6 @@
   font-weight: bold;
 }
 
-/* =========================
-   RESULT
-========================= */
 
 .poll-result {
   font-size: 40px;
@@ -87,9 +75,6 @@
   color: transparent;
 }
 
-/* =========================
-   POLL BAR
-========================= */
 
 .poll-bar-border {
   clip-path: polygon(
@@ -125,9 +110,6 @@
   height: 100%;
 }
 
-/* =========================
-   BUTTON CONTAINER
-========================= */
 
 .poll-options {
   display: flex;
@@ -139,9 +121,6 @@
   padding: 0 10px;
 }
 
-/* =========================
-   BUTTON BORDER
-========================= */
 
 .poll-btn-border {
   position: relative;
@@ -160,9 +139,6 @@
     filter 0.15s ease;
 }
 
-/* =========================
-   BUTTON
-========================= */
 
 .poll-btn {
   position: relative;
@@ -186,9 +162,6 @@
   justify-content: center;
 }
 
-/* =========================
-   YES
-========================= */
 
 #poll-btn-yes {
   clip-path: polygon(
@@ -208,9 +181,6 @@
   );
 }
 
-/* =========================
-   NO
-========================= */
 
 #poll-btn-no {
   clip-path: polygon(
@@ -230,9 +200,6 @@
   );
 }
 
-/* =========================
-   HOVER
-========================= */
 
 .poll-btn-border:hover {
   filter: drop-shadow(
@@ -252,9 +219,6 @@
   transform: translate(3px, -3px);
 }
 
-/* =========================
-   ACTIVE
-========================= */
 
 .poll-btn-border:active {
   transform: scale(0.97);
@@ -264,9 +228,6 @@
   filter: brightness(0.8);
 }
 
-/* =========================
-   DISABLED
-========================= */
 
 .poll-btn-border.disabled {
   cursor: not-allowed;

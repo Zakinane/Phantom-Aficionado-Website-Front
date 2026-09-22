@@ -32,17 +32,11 @@ const MainPage = () => {
     }
   });
 
-  /* =================================
-     SAVE SIDEBAR STATE
-  ================================= */
 
   useEffect(() => {
     localStorage.setItem("sidebar-collapsed", JSON.stringify(collapsedBar));
   }, [collapsedBar]);
 
-  /* =================================
-     AUTH CHECK
-  ================================= */
 
   useEffect(() => {
     if (!token) {
@@ -86,20 +80,11 @@ const MainPage = () => {
 
         <Sidebar collapsed={collapsedBar} setCollapsed={setCollapsedBar} />
 
-        {/* =========================
-            MAIN AREA
-        ========================= */}
 
         <div className="main-area">
-          {/* =========================
-              HEADER
-          ========================= */}
 
           <SearchBar value={search} onChange={setSearch} />
 
-          {/* =========================
-              CONTENT
-          ========================= */}
 
           <div className="page-layout">
             <main className="content-area">
@@ -110,9 +95,6 @@ const MainPage = () => {
               />
             </main>
 
-            {/* =========================
-                RIGHT SIDEBAR
-            ========================= */}
 
             <RightSideBar />
           </div>

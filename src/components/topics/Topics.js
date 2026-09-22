@@ -36,9 +36,6 @@ function Topics({ refreshTrigger, search, filter = "all", sort = "latest" }) {
     fetchTopics();
   }, [refreshTrigger]);
 
-  /* =========================
-     SEARCH
-  ========================= */
 
   let filteredTopics = topics.filter((topic) => {
     const title = topic.title?.toLowerCase() || "";
@@ -50,9 +47,6 @@ function Topics({ refreshTrigger, search, filter = "all", sort = "latest" }) {
     return title.includes(searchValue) || description.includes(searchValue);
   });
 
-  /* =========================
-     FILTER
-  ========================= */
 
   if (filter === "new") {
     filteredTopics = filteredTopics.filter((topic) => {
@@ -85,9 +79,6 @@ function Topics({ refreshTrigger, search, filter = "all", sort = "latest" }) {
     );
   }
 
-  /* =========================
-     SORT
-  ========================= */
 
   filteredTopics.sort((a, b) => {
     if (sort === "latest") {
@@ -119,9 +110,6 @@ function Topics({ refreshTrigger, search, filter = "all", sort = "latest" }) {
     return 0;
   });
 
-  /* =========================
-     STATES
-  ========================= */
 
   if (loading) {
     return <div className="loading-message">Loading the topics...</div>;

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./Sidebar.css";
+import phorumLogo from "../../assets/images/PhanSiteLogo.png" ;
 
 function Sidebar({ collapsed, setCollapsed }) {
   const navigate = useNavigate();
@@ -81,24 +82,20 @@ function Sidebar({ collapsed, setCollapsed }) {
       <aside className={`sidebar ${collapsed ? "collapsed" : ""}`}>
         <div className="halftone"></div>
 
-        {/* =========================
-            PHORUM BRAND  
-        ========================= */}
-
         <div className="sidebar-brand" onClick={() => navigate("/phorum")}>
-          <div className="brand-title">
-            P<span>H</span>ORUM
-          </div>
-
-          {!collapsed && (
-            <div className="brand-subtitle">Discuss everything about the thieves!</div>
+          {collapsed ? (
+            <img alt="phorum" src={phorumLogo} width="60px"/>
+          ) : (
+            <>
+              <div className="brand-title">
+                P<span>H</span>ORUM
+              </div>
+              <div className="brand-subtitle">
+                Discuss everything about the thieves!
+              </div>
+            </>
           )}
         </div>
-
-
-        {/* =========================
-            NAVIGATION
-        ========================= */}
 
         <nav className="menu">
           {menuItems.map((item) => {

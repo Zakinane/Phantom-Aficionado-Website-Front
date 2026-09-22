@@ -38,8 +38,6 @@
 }
 
 
-/* Main red slash */
-
 .header-shape-one {
   width: 320px;
   height: 85px;
@@ -50,8 +48,6 @@
   transform: rotate(-8deg);
 }
 
-
-/* Small slash */
 
 .header-shape-two {
   width: 230px;
@@ -153,8 +149,6 @@
 }
 
 
-/* Red left edge */
-
 .search-container::before {
   content: "";
 
@@ -169,8 +163,6 @@
   background: #e60012;
 }
 
-
-/* Focus */
 
 .search-container:focus-within {
   border-color: #e60012;
@@ -339,8 +331,6 @@
   }
 
 
-  /* Hide desktop branding */
-
   .header-brand {
     width: auto;
   }
@@ -357,8 +347,6 @@
     display: none;
   }
 
-
-  /* Search */
 
   .search-container {
     height: 42px;
@@ -390,8 +378,6 @@
   }
 
 
-  /* User */
-
   .header-user {
     width: auto;
 
@@ -413,8 +399,6 @@
     display: none;
   }
 
-
-  /* Decorations */
 
   .header-shape-one {
     width: 220px;

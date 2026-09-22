@@ -22,15 +22,12 @@ function RightSidebar() {
     {
       icon: "✉",
       title: "Contact",
-      href: "/support",
+      href: "https://github.com/Zakinane",
     },
   ];
 
   const [activities, setActivities] = useState([]);
 
-  // =========================
-  // FETCH LATEST ACTIVITIES
-  // =========================
 
   useEffect(() => {
     const fetchActivities = async () => {
@@ -77,9 +74,6 @@ function RightSidebar() {
     fetchActivities();
   }, []);
 
-  // =========================
-  // FORMAT TIME
-  // =========================
 
   const formatTime = (date) => {
     const seconds = Math.floor(
@@ -122,9 +116,6 @@ function RightSidebar() {
   return (
     <aside className="right-sidebar">
 
-      {/* =========================
-          QUICK LINKS
-      ========================= */}
 
       <section className="right-panel">
 
@@ -180,9 +171,6 @@ function RightSidebar() {
       </section>
 
 
-      {/* =========================
-          LATEST ACTIVITY
-      ========================= */}
 
       <section className="right-panel activity-panel">
 
@@ -246,7 +234,6 @@ function RightSidebar() {
                   </div>
 
 
-                  {/* POST PREVIEW */}
 
                   <div className="activity-preview">
                     {activity.content}
@@ -255,7 +242,6 @@ function RightSidebar() {
                 </div>
 
 
-                {/* TIME */}
 
                 <span className="activity-time">
                   {formatTime(
@@ -273,9 +259,6 @@ function RightSidebar() {
       </section>
 
 
-      {/* =========================
-          BANNER 1
-      ========================= */}
 
       <div className="right-banner">
 
@@ -298,9 +281,6 @@ function RightSidebar() {
       </div>
 
 
-      {/* =========================
-          BANNER 2
-      ========================= */}
 
     </aside>
   );

@@ -193,7 +193,7 @@ function TopicPage() {
                       </Markdown>
                     </div>
                   </div>
-                ) // A REGLER URGENT
+                )
             )
           )}
         </div>

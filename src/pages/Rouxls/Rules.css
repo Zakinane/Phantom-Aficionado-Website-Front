@@ -8,9 +8,6 @@
   color: white;
 }
 
-/* =========================
-   BANNER
-========================= */
 
 .rules-banner {
   position: relative;
@@ -79,18 +76,12 @@
   letter-spacing: 4px;
 }
 
-/* =========================
-   CONTENT
-========================= */
 
 .rules-content {
   max-width: 1000px;
   margin: auto;
 }
 
-/* =========================
-   INTRO
-========================= */
 
 .rules-intro {
   display: flex;
@@ -140,9 +131,6 @@
   line-height: 1.5;
 }
 
-/* =========================
-   RULE GRID
-========================= */
 
 .rules-grid {
   display: grid;
@@ -229,9 +217,6 @@
   line-height: 1.5;
 }
 
-/* =========================
-   WARNING
-========================= */
 
 .rules-warning {
   display: flex;
@@ -257,9 +242,6 @@
   font-size: 13px;
 }
 
-/* =========================
-   BACK BUTTON
-========================= */
 
 .rules-back-button {
   display: block;
@@ -297,9 +279,6 @@
   transform: scale(1.04) rotate(-1deg);
 }
 
-/* =========================
-   FOOTER
-========================= */
 
 .rules-footer {
   display: flex;
@@ -320,9 +299,6 @@
   font-weight: bold;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
 
 @media (max-width: 800px) {
   .quick-rules {

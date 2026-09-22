@@ -1,5 +1,3 @@
-
-
 .phorums {
   overflow: hidden;
   width: 100%;
@@ -14,12 +12,40 @@
 
   color: white;
 
-  font-family: Persona5 ,Arial, Helvetica, sans-serif;
+  font-family: Persona5, Arial, Helvetica, sans-serif;
   display: flex;
   align-items: center;
   flex-direction: column;
+
 }
 
+.phorums::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+
+  background-image: url("../../assets/images/Red-Star-Looping-Background.png");
+  background-size: cover;
+  background-position: bottom left;
+  background-repeat: no-repeat;
+
+  opacity: 0.9;
+
+  mask-image: radial-gradient(
+    ellipse at bottom left,
+    black 0%,
+    transparent 65%
+  );
+
+  -webkit-mask-image: radial-gradient(
+    ellipse at bottom left,
+    black 0%,
+    transparent 65%
+  );
+
+  pointer-events: none;
+}
 
 .phorum-banner {
   position: relative;
@@ -37,7 +63,6 @@
   background-image: url("https://wallpaper.forfun.com/fetch/d5/d57e12548050eeb1fa141be81922a6e1.jpeg");
   background-size: cover;
 }
-
 
 .banner-logo {
   position: absolute;
@@ -88,7 +113,6 @@
   -webkit-text-stroke: 4px black;
 }
 
-
 .latest-topics {
   position: absolute;
 
@@ -113,7 +137,6 @@
 
   box-shadow: 4px 4px 0 #111;
 }
-
 
 .banner-message {
   position: absolute;
@@ -144,7 +167,6 @@
   text-shadow: 2px 2px 0 #000;
 }
 
-
 .phorum-toolbar {
   width: 100%;
   height: 58px;
@@ -165,7 +187,6 @@
 
   background: linear-gradient(180deg, #101214, #070808);
 }
-
 
 .topic-filters {
   height: 100%;
@@ -225,7 +246,6 @@
   font-size: 15px;
 }
 
-
 .sort-select {
   width: 120px;
   height: 35px;
@@ -250,7 +270,6 @@
 .sort-select:focus {
   border-color: #e60012;
 }
-
 
 .topics-container {
   justify-content: center;
@@ -311,27 +330,19 @@
   transform: scale(1.08) rotate(5deg);
 }
 
-
 .phorum-footer {
   width: 100%;
-
   min-height: 55px;
-
   margin-top: 15px;
-
   border-top: 1px solid #262b2f;
-
   display: flex;
-
   align-items: center;
-
   justify-content: center;
-
   gap: 12px;
-
   color: #7d858a;
-
   font-size: 10px;
+  position: fixed;
+  bottom: 0px;
 }
 
 .footer-dot {
@@ -347,7 +358,6 @@
 
   transform: rotate(-15deg);
 }
-
 
 .phorums form {
   display: flex;
@@ -369,7 +379,6 @@
 .phorums button {
   cursor: pointer;
 }
-
 
 @media (max-width: 1000px) {
   .phorums {

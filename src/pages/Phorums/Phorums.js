@@ -46,15 +46,9 @@ function Phorums() {
 
   return (
     <div className="phorums">
-      {/* =================================
-          TOPIC BANNER
-      ================================= */}
 
       <section className="phorum-banner"></section>
 
-      {/* =================================
-          TOOLBAR
-      ================================= */}
 
       <section className="phorum-toolbar">
         <div className="topic-filters">
@@ -78,7 +72,6 @@ function Phorums() {
           <AddTopicButton onClick={() => setShowModal(true)} />
         </div>
 
-        {/* SORT */}
 
         <select
           className="sort-select"
@@ -93,9 +86,6 @@ function Phorums() {
         </select>
       </section>
 
-      {/* =================================
-          TOPICS
-      ================================= */}
 
       <section className="topics-container">
         <Topics
@@ -106,9 +96,6 @@ function Phorums() {
         />
       </section>
 
-      {/* =================================
-          FOOTER
-      ================================= */}
 
       <footer className="phorum-footer">
         <span>PHORUM</span>
@@ -122,9 +109,6 @@ function Phorums() {
         <span>Made by Zak</span>
       </footer>
 
-      {/* =================================
-          MODAL
-      ================================= */}
 
       {showModal && (
         <NewTopicModal

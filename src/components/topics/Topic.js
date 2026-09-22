@@ -30,9 +30,6 @@ function Topic({
 
   return (
     <Link to={topicRoomURL} className={`topic ${isNew ? "topic-new" : ""}`}>
-      {/* =================================
-          AVATAR
-      ================================= */}
 
       <div className="topic-avatar-container">
         {userAvatar ? (
@@ -42,9 +39,6 @@ function Topic({
         )}
       </div>
 
-      {/* =================================
-          MAIN CONTENT
-      ================================= */}
 
       <div className="topic-main">
         <div className="topic-title-row">
@@ -63,7 +57,6 @@ function Topic({
           </div>
         </div>
 
-        {/* USER + DATE */}
 
         <div className="topic-author">
           <span className="author-name">{username}</span>
@@ -74,9 +67,6 @@ function Topic({
         </div>
       </div>
 
-      {/* =================================
-          STATS
-      ================================= */}
 
       <div className="topic-stats">
         <div className="topic-stat">

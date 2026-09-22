@@ -5,6 +5,10 @@
   box-sizing: border-box;
 
   background: #050505;
+  background-image: url("https://preview.redd.it/persona-5-phone-wallpaper-evening-clear-v0-nkb7k0pbj1x01.jpg?width=640&crop=smart&auto=webp&s=06533a47bbef1efb3e3c7454b5515e3db9ab09a9");
+  background-position: center bottom;
+  background-size: contain;
+  background-repeat: no-repeat;
   color: white;
 
   display: flex;
@@ -22,11 +26,6 @@
 
   z-index: 20;
 }
-
-
-/* =========================
-   DECORATIVE BACKGROUND
-   ========================= */
 
 .sidebar-red-shape {
   position: absolute;
@@ -69,11 +68,6 @@
   opacity: 0.8;
 }
 
-
-/* =========================
-   BRAND
-   ========================= */
-
 .sidebar-brand {
   position: relative;
   z-index: 2;
@@ -108,8 +102,7 @@
 
   transform: rotate(-3deg);
 
-  text-shadow:
-    3px 3px 0 #222;
+  text-shadow: 3px 3px 0 #222;
 }
 
 .brand-title span {
@@ -126,11 +119,6 @@
 
   letter-spacing: 0.5px;
 }
-
-
-/* =========================
-   PROFILE
-   ========================= */
 
 .sidebar-profile {
   position: relative;
@@ -186,11 +174,6 @@
   font-size: 14px;
 }
 
-
-/* =========================
-   MENU
-   ========================= */
-
 .menu {
   position: relative;
   z-index: 2;
@@ -234,13 +217,7 @@
     transform 0.15s ease,
     color 0.15s ease;
 
-  clip-path: polygon(
-    0 0,
-    96% 0,
-    100% 50%,
-    96% 100%,
-    0 100%
-  );
+  clip-path: polygon(0 0, 96% 0, 100% 50%, 96% 100%, 0 100%);
 }
 
 .menu-item:hover {
@@ -256,8 +233,7 @@
 
   transform: translateX(5px);
 
-  box-shadow:
-    8px 0 0 #ff0015;
+  box-shadow: 8px 0 0 #ff0015;
 }
 
 .menu-item.active::before {
@@ -290,11 +266,6 @@
   opacity: 0.8;
 }
 
-
-/* =========================
-   NOTIFICATION BADGE
-   ========================= */
-
 .notification-badge {
   min-width: 21px;
   height: 21px;
@@ -319,11 +290,6 @@
   background: white;
   color: #e60012;
 }
-
-
-/* =========================
-   COLLAPSED
-   ========================= */
 
 .sidebar.collapsed {
   width: 76px;
@@ -403,11 +369,6 @@
   font-weight: bold;
 }
 
-
-/* =========================
-   TAKE YOUR HEART
-   ========================= */
-
 .take-your-heart {
   position: relative;
 
@@ -442,11 +403,6 @@
   font-size: 30px;
 }
 
-
-/* =========================
-   COLLAPSE BUTTON
-   ========================= */
-
 .collapse-button {
   position: relative;
   z-index: 2;
@@ -464,14 +420,21 @@
 
   background: transparent;
 
-  color: #aaa;
+  color: #f00505;
 
   cursor: pointer;
 
   font-size: 13px;
+  font-weight: bold;
 
   transition: color 0.15s ease;
+  text-align: center;
 }
+.collapse-arrow {
+  font-weight: bolder;
+  font-size: xx-large;
+}
+
 
 .collapse-button:hover {
   color: white;
@@ -480,11 +443,6 @@
 .sidebar.collapsed .collapse-button {
   justify-content: center;
 }
-
-
-/* =========================
-   LOGOUT
-   ========================= */
 
 .disconnect-btn {
   position: relative;
@@ -519,11 +477,6 @@
   background: #e60012;
   border-color: #e60012;
 }
-
-
-/* =========================
-   TOOLTIP
-   ========================= */
 
 .tooltip {
   position: fixed;
@@ -560,13 +513,7 @@
   color: #aaa;
 }
 
-
-/* =========================
-   MOBILE
-   ========================= */
-
 @media (max-width: 768px) {
-
   .sidebar {
     position: fixed;
 
